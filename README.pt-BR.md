@@ -4,7 +4,7 @@ Um sistema vazio para um criador. Cole o prompt abaixo no agente de código que 
 
 English: [README.md](README.md)
 
-`AGENTS.md` é o arquivo de entrada. `CLAUDE.md` aponta para ele. A primeira resposta define o idioma. O agente reescreve os markdown e as pastas que você lê nesse idioma, e só então segue a entrevista.
+`AGENTS.md` é o arquivo de entrada. `CLAUDE.md` aponta para ele. A primeira resposta define o idioma. A entrevista segue nesse idioma. A troca das pastas acontece uma vez, depois da releitura, e só vale quando a checagem de caminhos passa.
 
 ## Cole isto
 
@@ -13,7 +13,7 @@ Um prompt só. Copie o bloco e envie como primeira mensagem.
 ```
 Configure esta pasta como o meu sistema de rede social. Esta mensagem é a configuração. Não existe um passo de instalação separado.
 
-Leia AGENTS.md e siga o arquivo. Leia memory/config.md. Se status não for ready, siga onboarding/interview.md e não faça outro trabalho. A primeira pergunta é o idioma do sistema inteiro. Depois que eu responder, rode a passagem de idioma desse arquivo antes de perguntar qualquer outra coisa: reescreva cada markdown do projeto nesse idioma, renomeie as pastas e os arquivos markdown que eu leio para combinar, e atualize cada referência. As chaves de configuração, o marcador FILL VIA ONBOARDING e os nomes dos arquivos de código ficam como estão. Depois continue a entrevista, uma pergunta por vez, nesse idioma. Grave cada resposta no arquivo que a entrevista indicar, na hora. Se eu já publico, abra esses perfis e termine a leitura deles antes de perguntar nicho, voz ou visual. Proponha só a partir do que você de fato viu. Rode a checagem de instalação de cada ferramenta que eu marcar como sim. Checagem que falha não termina. Não marque status como ready enquanto faltar resposta obrigatória ou checagem.
+Leia AGENTS.md e siga o arquivo. Leia memory/config.md. Se status não for ready, siga onboarding/interview.md e não faça outro trabalho. A primeira pergunta é o idioma do sistema inteiro. Depois que eu responder, faça o resto nesse idioma e grave as respostas nele. Não renomeie pastas no meio da entrevista. Depois da releitura, siga .claude/commands/aplicar-idioma.md uma vez. Isso reescreve os markdown, renomeia as pastas que eu leio, e só grava files_language quando onboarding/language_paths.py check imprimir ok. Uma pergunta por vez. Grave cada resposta no arquivo que a entrevista indicar, na hora. Se eu já publico, abra esses perfis e termine a leitura deles antes de perguntar nicho, voz ou visual. Copie a primeira linha na tela de cada vídeo para o swipe file. Antes de eu escolher continuar a edição antiga, diga o que segura um estranho e o que o perde nos primeiros segundos. Proponha só a partir do que você de fato viu. Rode a checagem de instalação de cada ferramenta que eu marcar como sim. Checagem que falha não termina. Não marque status como ready enquanto faltar resposta obrigatória ou checagem.
 
 Se status já for ready, não me entreviste de novo. Leia memory/project_social_media_status.md e espere uma tarefa.
 

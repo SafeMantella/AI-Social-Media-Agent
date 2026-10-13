@@ -2,7 +2,7 @@
 
 Follow this on the first open, and whenever `memory/config.md` is not `ready`.
 
-Ask one question at a time. Question 1 chooses the language. Until the language pass below is finished, ask that question in the language the creator is already writing in. After the pass, ask every later question in `content_language`. Keep the creator's own words for their niche, promise, voice samples, and bios.
+Ask one question at a time. Question 1 chooses the language. Ask it in the language the creator is already writing in. From question 2 on, ask and write in `content_language`. Keep the creator's own words for their niche, promise, voice samples, and bios. Folder names stay as they are until the language command, which runs once after the readback.
 
 Write each answer immediately, then ask the next unanswered question. If the creator answers several questions in one message, write what is already clear and ask only what is missing. If an answer is vague, reflect it in one sentence and wait for a yes before writing. If a new answer contradicts an earlier one, the file keeps the new answer.
 
@@ -12,44 +12,9 @@ Remove the line `FILL VIA ONBOARDING` from a section when you replace it. `statu
 
 ## Questions
 
-1. Language. One language for the whole system and for posts, scripts, captions, and hooks. Write `content_language` in `memory/config.md`. Do not ask question 2 until the language pass is finished.
+1. Language. One language for the whole system and for posts, scripts, captions, and hooks. Write `content_language` in `memory/config.md`. Then ask question 2. Do not rename folders yet.
 
-## Language pass
-
-Do this immediately after question 1, before question 2. Also do it when `content_language` is set and `files_language` is empty or different. Skipping it does not finish onboarding. If the conversation stops, resume here.
-
-The template ships with English prose and a mix of English and Portuguese names. After this pass, one language is in the tree: `content_language`.
-
-Translate the prose of every project markdown file into that language. Skip `.git`, `venv`, `.venv`, `node_modules`, `site-packages`, and downloaded media. Translate tool READMEs. Do not translate source code.
-
-Rename creator-facing folders and markdown filenames into that language, then update every reference in the same pass. Do not finish while a markdown file still points at an old path.
-
-Use this map. The column for `content_language` is the target. Any other language uses the same rows, with the names translated, and does not keep the English or Portuguese name.
-
-| Path now | English | Portuguese |
-|---|---|---|
-| `estrategia` | `strategy` | `estrategia` |
-| `conteudo` | `content` | `conteudo` |
-| `conteudo/ideias` | `content/ideas` | `conteudo/ideias` |
-| `conteudo/roteiros` | `content/scripts` | `conteudo/roteiros` |
-| `conteudo/carrosseis` | `content/carousels` | `conteudo/carrosseis` |
-| `conteudo/legendas` | `content/captions` | `conteudo/legendas` |
-| `referencia` | `reference` | `referencia` |
-| `referencia/pesquisas` | `reference/research` | `referencia/pesquisas` |
-| `referencia/perfil-atual` | `reference/current-profile` | `referencia/perfil-atual` |
-| `gravações` | `recordings` | `gravações` |
-| `memory` | `memory` | `memoria` |
-| `freebies` | `freebies` | `iscas` |
-| `onboarding` | `onboarding` | `onboarding` |
-| `onboarding/interview.md` | `onboarding/interview.md` | `onboarding/entrevista.md` |
-
-Translate every other markdown filename that is not already in `content_language`, and update the references. Leave these names as they are: `AGENTS.md`, `CLAUDE.md`, `SKILL.md`, `README.md`, `.gitignore`. Keep one README in the chosen language and remove the other language's README. Do not rename anything inside `ferramentas/`. A virtual environment lives there, and renaming it breaks the tools. Translate only the READMEs in that tree.
-
-Leave these tokens exactly as written, including inside the translated files. The gate looks for them: keys and allowed values in `memory/config.md`, `FILL VIA ONBOARDING`, `decision: keep`, `decision: change`. Command flags and script filenames stay as they are.
-
-When the prose is in `content_language`, the renamed paths are the only paths in the markdown, and `AGENTS.md` still contains those tokens, write `files_language` with the same value as `content_language`. Then continue at question 2 of the interview in that language. Do not ask question 1 again.
-
-2. Brand name. Write `brand_name` and the Brand name section of `estrategia/01-posicionamento-e-pilares.md`. The path is the one from the language pass if this file was renamed.
+2. Brand name. Write `brand_name` and the Brand name section of `estrategia/01-posicionamento-e-pilares.md`, in `content_language`.
 
 3. Already publishing? Yes or no. Write `existing_content` in `memory/config.md`. `no` skips question 4 and the profile read.
 
@@ -71,12 +36,18 @@ For each of those videos:
 - Download and transcribe with `ferramentas/instagram-transcript/instagram_transcript.py`. Pass `--language auto`. Instagram and TikTok need a session file that stays outside git. The tool README says how to export it. Ask once. If that file already exists, do not ask again. The same file can satisfy question 21 later. If they will not provide it, keep the caption, mark the transcript as a gap, and do not pretend you heard the audio.
 - Print frames with `ferramentas/prep-frames/prep-frames` on the downloaded file. Read `resumo.md` and the contact sheet. Note the hook frame, on-screen text, cut rhythm, face, color, and music when the picture shows them.
 - Write `referencia/perfil-atual/<platform>/<id>.md` with the URL, the full caption, the transcript, and what the frames show. The video file stays in the tool's download folder and is gitignored. Frame images under `referencia/perfil-atual/` are gitignored. The markdown is the record that remains.
+- Append the opener to `referencia/swipe-openers.md`: the first on-screen line, and the first spoken sentence when there is speech. Copy them. Do not invent a line. Remove the "None yet" line once a real opener is there. The sprint later fills this file out to 15–20 lines. These three start it.
 
 **Other platforms.** Open the page. Take the three newest public pieces. A video gets a transcript when the same tool accepts the URL, plus frames when a file was downloaded. A text post gets the full text. A channel or a list gets the bio and those three pieces, not the whole archive.
 
 Then write `referencia/perfil-atual/RESUMO.md`. Cover what repeats across the pieces, what changes, and a draft of niche, audience, promise, pillars, voice, and visual system. Include an edit recipe: how the open works, how dense the cut is, how text sits on screen, whether a face is present, and what the caption is doing.
 
-Show that recipe to the creator and ask whether to keep editing this way. Write `memory/edicao-observada.md` with `decision: keep` or `decision: change`. `keep` means later videos match the recipe unless they correct it. `change` means the recipe is context only. The next questions decide the new system. Do not fill a brand file from the read alone.
+Show that recipe to the creator. Before asking them to keep or change it, say two sentences from the frames and the transcript, and write both into `referencia/perfil-atual/RESUMO.md` under `Hold` and `Drop`:
+
+- **Hold.** What in this edit gives a stranger a reason to stay.
+- **Drop.** What in the first seconds gives them a reason to leave.
+
+Then ask. Write `memory/edicao-observada.md` with `decision: keep` or `decision: change`, and copy the two sentences into that file. `keep` means later videos match the recipe unless they correct it. `change` means the recipe is context only. The next questions decide the new system. Do not fill a brand file from the read alone. Do not ask for the decision before the two sentences have been said.
 
 `status: ready` is forbidden while `existing_content` is `yes` and either `referencia/perfil-atual/RESUMO.md` is missing or `memory/edicao-observada.md` has no decision line.
 
@@ -124,7 +95,7 @@ When the profile read exists, questions 5 through 13 are proposals. State what t
 
 24. Recurring behind-the-scenes series: yes or no. The workflow file stays in the repo. `no` leaves `.claude/commands/registrar-bastidores.md` dormant. `yes` does not create the series page during onboarding. Write `behind_the_scenes`.
 
-25. Read back niche, audience, promise, pillars, platforms, handles, storage, carousel, tools, the series choice, whether they already publish, and the keep-or-change decision. Apply corrections. Then set `status: ready`.
+25. Read back niche, audience, promise, pillars, platforms, handles, storage, carousel, tools, the series choice, whether they already publish, and the keep-or-change decision. Apply corrections. Then follow `.claude/commands/aplicar-idioma.md`. Set `files_language` only when `python3 onboarding/language_paths.py check` prints `ok`. Then set `status: ready`. A failed check does not finish onboarding.
 
 ## Install checks
 

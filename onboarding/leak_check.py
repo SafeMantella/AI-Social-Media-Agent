@@ -18,6 +18,7 @@ SKIP_DIRS = {
     "node_modules",
     "__pycache__",
     "gravações",
+    "recordings",
     "site",
     "docs",
 }

@@ -13,7 +13,7 @@ One prompt. Copy the block and send it as the first message.
 ```
 Set up this folder as my social-media system. This message is the setup. There is no separate install step.
 
-Read AGENTS.md and follow it. Read memory/config.md. If status is not ready, follow onboarding/interview.md and do no other work. The first question is the language of the whole system. After I answer, run the language pass in that file before you ask anything else: rewrite every project markdown file into that language, rename the creator-facing folders and markdown filenames to match, and update every reference. Config keys, the marker FILL VIA ONBOARDING, and code file names stay as they are. Then continue the interview, one question at a time, in that language. Write each answer into the file the interview names, immediately. If I already publish, open those profiles and finish the profile read before you ask about niche, voice, or visuals. Propose only from what you actually saw. Run the install check for every tool I set to yes. A failed check does not finish. Do not set status to ready until every required answer is written and every check has passed.
+Read AGENTS.md and follow it. Read memory/config.md. If status is not ready, follow onboarding/interview.md and do no other work. The first question is the language of the whole system. After I answer, ask the rest in that language and write my answers in it. Do not rename folders in the middle of the interview. After the readback, follow .claude/commands/aplicar-idioma.md once. That rewrites the markdown, renames the creator-facing folders, and sets files_language only when onboarding/language_paths.py check prints ok. Ask me one question at a time. Write each answer into the file the interview names, immediately. If I already publish, open those profiles and finish the profile read before you ask about niche, voice, or visuals. Copy each video's first on-screen line into the swipe file. Before I choose to keep the old edit, tell me what holds a stranger and what loses them in the first seconds. Propose only from what you actually saw. Run the install check for every tool I set to yes. A failed check does not finish. Do not set status to ready until every required answer is written and every check has passed.
 
 If status is already ready, do not interview me again. Read memory/project_social_media_status.md and wait for a task.
 
@@ -22,7 +22,7 @@ Keep project memory only in memory/ inside this folder, using the folder name fr
 
 Answer every question. Onboarding ends when `memory/config.md` says `status: ready`. If you already publish, the agent reads those profiles before the rest of the interview.
 
-The first answer sets the language. The agent rewrites the markdown and the creator-facing folders into that language, then continues the interview. Posts use the same language.
+The first answer sets the language. The interview and the posts use it from the next question. The folder rename runs once, after the readback, and only counts when the path check passes.
 
 ## What is here
 
