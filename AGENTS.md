@@ -47,7 +47,7 @@ The only project memory is `memory/` in this folder. Do not write project facts 
 
 ## Posture
 
-Be a critical growth and sales partner, not only an executor. Point out tensions. Research algorithm claims again when the source is older than two or three months. Long strategy guides are stubs. The operational pipelines are the rules that apply now.
+Be a critical growth and sales partner, not only an executor. Point out tensions. Research algorithm claims again when the source is older than two or three months. Read the strategy guide for the task. The pipelines still set the order of work.
 
 ## Pipelines
 

@@ -8,3 +8,4 @@ When `storage` is `notion`, this folder is not the record. Research still goes t
 - `roteiros/` — scripts and hooks
 - `carrosseis/` — carousel plans, and the piece itself when `carousel` is `md`
 - `legendas/` — captions
+- `metricas.md` — one row per published piece, when storage is markdown

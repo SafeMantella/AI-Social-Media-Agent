@@ -24,16 +24,19 @@ Read this after onboarding. Numbers, handles, and the niche are not in this file
 - Research: `memory/pipeline_pesquisa.md`
 - Full index: `memory/INDEX.md`
 
-## Stubs
+## Strategy
 
-These files name what a later version will cover. The pipelines above are the rules until then:
+The pipelines set the order. These guides are the method. Examples point at the brand files, which stay blank until onboarding.
 
-- `memory/estrategias-principais.md`
-- `memory/diretrizes-copywriting.md`
-- `memory/diretrizes-trafego.md`
-- `memory/diretrizes-hormozi.md`
-- `memory/growth_sales_critical_lens.md`
-- `estrategia/04-metricas-e-otimizacao.md` through `estrategia/10-copywriting.md`, except `03` and `06`, which are operational.
+- `memory/estrategias-principais.md` — weekly playbook
+- `memory/growth_sales_critical_lens.md` — ranking notes. Re-check when the dates are older than two or three months.
+- `memory/diretrizes-trafego.md`, `memory/diretrizes-hormozi.md`, `memory/diretrizes-copywriting.md`
+- `estrategia/04-metricas-e-otimizacao.md` — what to log
+- `estrategia/05-roadmap-implementacao.md` — setup, run, scale
+- `estrategia/07-funil-de-conteudo.md` — top, middle, bottom
+- `estrategia/08-crescimento-e-auditoria-perfil.md` — live profile audit
+- `estrategia/09-sprint-cold-start-30-dias.md` — 30-day floor
+- `estrategia/10-copywriting.md` — copy method
 
 ## Approval
 

@@ -19,7 +19,7 @@ Source: outside best-practice notes and a creative-team quality rubric, checked 
 ## Copy and script
 
 9. **Three candidate hooks before the body**, each with a different trigger and structure (question, contrary claim, number, story, direct benefit, pattern break, an opponent), plus one line on why that hook. This is already step 3 of the script pipeline. Use the types as a menu.
-10. Apply the vetoes in `estrategia/10-copywriting.md` sections 17.4 and 17.5, and read the piece out loud.
+10. Apply the vetoes in `estrategia/10-copywriting.md` (the Vetoes section), and read the piece out loud.
 
 ## Score rubric (0 to 10) for an important piece
 

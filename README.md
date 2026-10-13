@@ -17,7 +17,7 @@ System files stay in English. The agent talks in the language you use. Posts, sc
 | `AGENTS.md` | Rules. Read on every open. |
 | `onboarding/interview.md` | The first-run interview. |
 | `memory/` | Decisions, pipelines, and the brand once onboarding fills it. Start at `memory/project_social_media_status.md`. |
-| `estrategia/` | Strategy docs. Long guides are stubs in this version. |
+| `estrategia/` | Strategy docs. The long guides are the method. Brand files stay blank until onboarding. |
 | `.claude/skills/` | SOPs the agent loads. |
 | `.claude/commands/` | Workflows. Ask the agent to read the file and follow it. |
 | `ferramentas/` | Local tools. |

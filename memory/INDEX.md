@@ -59,12 +59,13 @@ Read the file when the task touches it. `AGENTS.md` stays short on purpose.
 - `memory/substack_best_practices.md`
 - `memory/token-saver-prep-local.md`
 
-## Stubs
+## Strategy
 
-- `memory/estrategias-principais.md`
-- `memory/diretrizes-copywriting.md`
-- `memory/diretrizes-trafego.md`
-- `memory/diretrizes-hormozi.md`
-- `memory/growth_sales_critical_lens.md`
+- `memory/estrategias-principais.md` — what to run this week
+- `memory/diretrizes-copywriting.md` — pointer into `estrategia/10-copywriting.md`
+- `memory/diretrizes-trafego.md` — organic first, paid later
+- `memory/diretrizes-hormozi.md` — offer, acquisition, money model
+- `memory/growth_sales_critical_lens.md` — ranking notes and the critical posture
+- `estrategia/04-metricas-e-otimizacao.md` through `estrategia/10-copywriting.md` — metrics, roadmap, funnel, profile audit, 30-day sprint, copy. `03` and `06` stay the SOPs.
 
 `memory/feedback-repo-do-dia-format.md` records that this template has no built-in light-format exception.
