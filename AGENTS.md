@@ -19,6 +19,8 @@ Stop and follow `onboarding/interview.md` when any of these is true:
 
 Do no other work until `status` is `ready`. Ask one question at a time. Question 1 is the language. From question 2, ask and write in `content_language`. Write each answer immediately. If the conversation stops, resume at the first unanswered required question. If `content_language` is set and `files_language` does not match, resume at `.claude/commands/aplicar-idioma.md` instead of renaming folders in the middle of the interview.
 
+One setup step is allowed during that stop. If `ferramentas/Pytho-inator/pytho-inator` is missing, clone `https://github.com/SafeMantella/Pytho-inator.git` into `ferramentas/Pytho-inator` and make the wrapper executable. Do not edit the clone. Do not run it until `status` is `ready`.
+
 Allowed values:
 
 - `status`: `empty` or `ready`
@@ -85,13 +87,22 @@ Ask the agent to read the file and follow it:
 - `.claude/commands/sugerir-conteudo.md`
 - `.claude/commands/registrar-bastidores.md` only when `behind_the_scenes` is `yes`
 - `.claude/commands/aplicar-idioma.md` once, after the onboarding readback, before `status: ready`
+- `.claude/commands/map-automation-opportunities.md` once `status` is `ready`
+- `.claude/commands/check-skills.md` once `status` is `ready`
 
 ## Skills
 
 - `.claude/skills/sistema-social-media/SKILL.md` — carousel and video SOP
 - `.claude/skills/ferramentas-locais/SKILL.md` — local tools
 - `.claude/skills/transcricao-confiavel/SKILL.md` — transcription
+- `.claude/skills/pytho-inator/SKILL.md` — map a repeated task to one local Python CLI. The folder is a symlink into the clone.
 
 ## Approval
 
 The creator approves before anything is scheduled or published. Photos and screen recordings are real files the creator supplies.
+
+## Automation
+
+Run this only when `status` is `ready`.
+
+When a task created or edited files, finish the task, then run `ferramentas/Pytho-inator/pytho-inator glance` on those files. Empty stdout means do not mention automation. A hit is one local Python CLI: at most three lines, and the last line of the CLI output is the finished task. Ask, in `content_language`, whether to build it. Do not build it and do not test it in that turn. A yes follows `ferramentas/Pytho-inator/skills/pytho-inator/SKILL.md`. Drop menus (`shape=fan-out`) and taste, approval, voice, strategy, or the interview (`judgment=keep`). If a Claude Code hook already printed the line, do not run glance again.

@@ -13,9 +13,9 @@ One prompt. Copy the block and send it as the first message.
 ```
 Set up this folder as my social-media system. This message is the setup. There is no separate install step.
 
-Read AGENTS.md and follow it. Read memory/config.md. If status is not ready, follow onboarding/interview.md and do no other work. The first question is the language of the whole system. After I answer, ask the rest in that language and write my answers in it. Do not rename folders in the middle of the interview. After the readback, follow .claude/commands/aplicar-idioma.md once. That rewrites the markdown, renames the creator-facing folders, and sets files_language only when onboarding/language_paths.py check prints ok. Ask me one question at a time. Write each answer into the file the interview names, immediately. If I already publish, open those profiles and finish the profile read before you ask about niche, voice, or visuals. Copy each video's first on-screen line into the swipe file. Before I choose to keep the old edit, tell me what holds a stranger and what loses them in the first seconds. Propose only from what you actually saw. Run the install check for every tool I set to yes. A failed check does not finish. Do not set status to ready until every required answer is written and every check has passed.
+If ferramentas/Pytho-inator is missing, clone https://github.com/SafeMantella/Pytho-inator.git into ferramentas/Pytho-inator and make ferramentas/Pytho-inator/pytho-inator executable. Do not edit that clone. Read AGENTS.md and follow it. Read memory/config.md. If status is not ready, follow onboarding/interview.md and do no other work. Do not suggest an automation during onboarding. The first question is the language of the whole system. After I answer, ask the rest in that language and write my answers in it. Do not rename folders in the middle of the interview. After the readback, follow .claude/commands/aplicar-idioma.md once. That rewrites the markdown, renames the creator-facing folders, and sets files_language only when onboarding/language_paths.py check prints ok. Ask me one question at a time. Write each answer into the file the interview names, immediately. If I already publish, open those profiles and finish the profile read before you ask about niche, voice, or visuals. Copy each video's first on-screen line into the swipe file. Before I choose to keep the old edit, tell me what holds a stranger and what loses them in the first seconds. Propose only from what you actually saw. Run the install check for every tool I set to yes. A failed check does not finish. Do not set status to ready until every required answer is written and every check has passed.
 
-If status is already ready, do not interview me again. Read memory/project_social_media_status.md and wait for a task.
+If status is already ready, do not interview me again. Read memory/project_social_media_status.md and wait for a task. After status is ready, at the end of each task that created or edited files, run ferramentas/Pytho-inator/pytho-inator glance on those files. If it prints nothing, say nothing about automation. If it prints a hit, show at most three lines and ask whether to build that Python CLI. Do not build it unless I say yes.
 
 Keep project memory only in memory/ inside this folder, using the folder name from the language pass if it was renamed. Do not publish, build in Canva, or render full resolution unless I explicitly say yes.
 ```
@@ -76,7 +76,11 @@ Each tool has a README in its folder. Third-party clones are gitignored. Re-clon
 ```bash
 cd ferramentas
 git clone https://github.com/mvanhorn/last30days-skill.git
+git clone https://github.com/SafeMantella/Pytho-inator.git
+chmod +x Pytho-inator/pytho-inator
 ```
+
+Pytho-inator maps a repeated task to one local Python CLI. After onboarding, the agent suggests that CLI at the end of a task. Nothing is built until you say yes.
 
 Session files and browser exports stay out of git. See `.gitignore`.
 

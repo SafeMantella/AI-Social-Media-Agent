@@ -13,9 +13,9 @@ Um prompt só. Copie o bloco e envie como primeira mensagem.
 ```
 Configure esta pasta como o meu sistema de rede social. Esta mensagem é a configuração. Não existe um passo de instalação separado.
 
-Leia AGENTS.md e siga o arquivo. Leia memory/config.md. Se status não for ready, siga onboarding/interview.md e não faça outro trabalho. A primeira pergunta é o idioma do sistema inteiro. Depois que eu responder, faça o resto nesse idioma e grave as respostas nele. Não renomeie pastas no meio da entrevista. Depois da releitura, siga .claude/commands/aplicar-idioma.md uma vez. Isso reescreve os markdown, renomeia as pastas que eu leio, e só grava files_language quando onboarding/language_paths.py check imprimir ok. Uma pergunta por vez. Grave cada resposta no arquivo que a entrevista indicar, na hora. Se eu já publico, abra esses perfis e termine a leitura deles antes de perguntar nicho, voz ou visual. Copie a primeira linha na tela de cada vídeo para o swipe file. Antes de eu escolher continuar a edição antiga, diga o que segura um estranho e o que o perde nos primeiros segundos. Proponha só a partir do que você de fato viu. Rode a checagem de instalação de cada ferramenta que eu marcar como sim. Checagem que falha não termina. Não marque status como ready enquanto faltar resposta obrigatória ou checagem.
+Se ferramentas/Pytho-inator não existir, clone https://github.com/SafeMantella/Pytho-inator.git em ferramentas/Pytho-inator e deixe ferramentas/Pytho-inator/pytho-inator executável. Não edite esse clone. Leia AGENTS.md e siga o arquivo. Leia memory/config.md. Se status não for ready, siga onboarding/interview.md e não faça outro trabalho. Não sugira automação durante o onboarding. A primeira pergunta é o idioma do sistema inteiro. Depois que eu responder, faça o resto nesse idioma e grave as respostas nele. Não renomeie pastas no meio da entrevista. Depois da releitura, siga .claude/commands/aplicar-idioma.md uma vez. Isso reescreve os markdown, renomeia as pastas que eu leio, e só grava files_language quando onboarding/language_paths.py check imprimir ok. Uma pergunta por vez. Grave cada resposta no arquivo que a entrevista indicar, na hora. Se eu já publico, abra esses perfis e termine a leitura deles antes de perguntar nicho, voz ou visual. Copie a primeira linha na tela de cada vídeo para o swipe file. Antes de eu escolher continuar a edição antiga, diga o que segura um estranho e o que o perde nos primeiros segundos. Proponha só a partir do que você de fato viu. Rode a checagem de instalação de cada ferramenta que eu marcar como sim. Checagem que falha não termina. Não marque status como ready enquanto faltar resposta obrigatória ou checagem.
 
-Se status já for ready, não me entreviste de novo. Leia memory/project_social_media_status.md e espere uma tarefa.
+Se status já for ready, não me entreviste de novo. Leia memory/project_social_media_status.md e espere uma tarefa. Depois que status for ready, no fim de cada tarefa que criou ou editou arquivos, rode ferramentas/Pytho-inator/pytho-inator glance nesses arquivos. Se não imprimir nada, não fale de automação. Se imprimir um achado, mostre no máximo três linhas e pergunte se eu quero construir esse CLI em Python. Não construa sem um sim meu.
 
 A memória do projeto fica só em memory/ dentro desta pasta, no nome de pasta que a passagem de idioma tiver deixado. Não publique, não monte no Canva e não renderize em resolução final sem um sim explícito meu.
 ```
@@ -74,7 +74,11 @@ Cada ferramenta tem um README na pasta dela. Clones de terceiros ficam fora do g
 ```bash
 cd ferramentas
 git clone https://github.com/mvanhorn/last30days-skill.git
+git clone https://github.com/SafeMantella/Pytho-inator.git
+chmod +x Pytho-inator/pytho-inator
 ```
+
+O Pytho-inator mapeia uma tarefa repetida para um CLI Python local. Depois do onboarding, o agente sugere esse CLI no fim da tarefa. Nada é construído até um sim.
 
 Arquivos de sessão e exportações do navegador ficam fora do git. Veja `.gitignore`.
 

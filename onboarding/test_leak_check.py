@@ -53,6 +53,28 @@ def main() -> int:
             print("FAIL: clean dir was flagged")
             return 1
 
+        org = "Safe" + "Mantella"
+        url_words = base / "url-words.txt"
+        url_words.write_text(org + "\n", encoding="utf-8")
+        allowed = base / "allowed"
+        allowed.mkdir()
+        (allowed / "note.md").write_text(
+            "git clone https://github.com/" + org + "/Pytho-inator.git\n",
+            encoding="utf-8",
+        )
+        allowed_run = run(allowed, url_words)
+        if allowed_run.returncode != 0:
+            print(allowed_run.stdout)
+            print("FAIL: the clone URL was flagged")
+            return 1
+        extra = base / "extra"
+        extra.mkdir()
+        (extra / "note.md").write_text("see " + org + " elsewhere\n", encoding="utf-8")
+        extra_run = run(extra, url_words)
+        if extra_run.returncode == 0:
+            print("FAIL: org name outside the clone URL was accepted")
+            return 1
+
     print("ok")
     return 0
 

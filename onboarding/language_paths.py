@@ -38,6 +38,11 @@ SKIP_DIRS = {
     "__pycache__",
     "gravações",
     "recordings",
+    # Third-party clones. Rewriting them dirties an upstream repo.
+    "Pytho-inator",
+    "pytho-inator",
+    "last30days-skill",
+    "fontastic-text-image-generator",
 }
 SKIP_FILES = {"language_paths.py", "test_language_paths.py"}
 TEXT_SUFFIXES = {

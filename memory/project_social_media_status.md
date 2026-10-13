@@ -40,6 +40,10 @@ The pipelines set the order. These guides are the method. Examples point at the 
 - `estrategia/09-sprint-cold-start-30-dias.md` — 30-day floor
 - `estrategia/10-copywriting.md` — copy method
 
+## Automation
+
+After `status` is `ready`, a task that created or edited files ends with `ferramentas/Pytho-inator/pytho-inator glance` on those files. Empty output stays silent. A hit is one local Python CLI the creator can approve or refuse. Nothing is built before a yes. The procedure is the Automation section of `AGENTS.md`.
+
 ## Approval
 
 The creator approves before anything is scheduled or published.

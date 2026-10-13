@@ -21,7 +21,17 @@ SKIP_DIRS = {
     "recordings",
     "site",
     "docs",
+    # Third-party clone. Its own text is not this template.
+    "Pytho-inator",
+    "pytho-inator",
 }
+
+# Built by concatenation so this file does not contain the org name.
+_CLONE_ORG = "Safe" + "Mantella"
+CLONE_URLS = (
+    f"https://github.com/{_CLONE_ORG}/Pytho-inator.git".lower(),
+    f"https://github.com/{_CLONE_ORG}/Pytho-inator".lower(),
+)
 
 # Path prefixes are concatenated so this file does not contain them as literals.
 SECRET_RES = [
@@ -76,6 +86,8 @@ def scan(root: Path, words: list[str]) -> list[str]:
             hits.append(f"{rel}: unreadable ({exc})")
             continue
         low_text = text.lower()
+        for url in CLONE_URLS:
+            low_text = low_text.replace(url, "")
         for raw, low in lowered:
             if low in low_text:
                 hits.append(f"{rel}: contains {raw}")

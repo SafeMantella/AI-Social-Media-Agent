@@ -73,6 +73,7 @@ def main() -> int:
         write(pt / "memory" / "config.md", "content_language: Português\n")
         write(pt / "freebies" / "README.md", "see memory/config.md\n")
         write(pt / "onboarding" / "interview.md", "question\n")
+        write(pt / "ferramentas" / "Pytho-inator" / "note.md", "see memory/config.md\n")
         pt_apply = run(["apply", "--root", str(pt), "--language", "Português"])
         if pt_apply.returncode != 0:
             print(pt_apply.stderr)
@@ -88,6 +89,11 @@ def main() -> int:
         if "memoria/config.md" not in iscas:
             print("FAIL: memory reference")
             print(iscas)
+            return 1
+        clone_note = (pt / "ferramentas" / "Pytho-inator" / "note.md").read_text(encoding="utf-8")
+        if clone_note != "see memory/config.md\n":
+            print("FAIL: third-party clone was rewritten")
+            print(clone_note)
             return 1
         pt_check = run(["check", "--root", str(pt), "--language", "Português"])
         if pt_check.returncode != 0:
