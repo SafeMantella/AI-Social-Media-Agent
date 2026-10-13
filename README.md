@@ -1,16 +1,30 @@
 # Social media agent
 
-An empty system for one creator. The first time a coding agent opens this folder, it runs onboarding and fills the brand, the platforms, and the tools. After that, the pipelines are the way of working.
+An empty system for one creator. Paste the prompt below into the coding agent of your choice, with this folder open. That is the setup. It runs onboarding and fills the brand, the platforms, and the tools.
+
+Português (Brasil): [README.pt-BR.md](README.pt-BR.md)
 
 `AGENTS.md` is the entry file. `CLAUDE.md` points at it.
 
-## 1. First open
+## Paste this
 
-Open the folder in your coding agent and say you are here. If `memory/config.md` says `status: empty`, the agent interviews you. One question at a time. If you already publish, it reads those profiles before the rest of the interview. Answer all of them. `status: ready` is the end of onboarding.
+One prompt. Copy the block and send it as the first message.
+
+```
+Set up this folder as my social-media system. This message is the setup. There is no separate install step.
+
+Read AGENTS.md and follow it. Read memory/config.md. If status is not ready, follow onboarding/interview.md from the first unanswered question and do no other work. Ask me one question at a time, in the language I am using. Write each answer into the file the interview names, immediately. If I already publish, open those profiles and finish the profile read before you ask about niche, voice, or visuals. Propose only from what you actually saw. Run the install check for every tool I set to yes. A failed check does not finish. Do not set status to ready until every required answer is written and every check has passed.
+
+If status is already ready, do not interview me again. Read memory/project_social_media_status.md and wait for a task.
+
+System files stay in English. Write posts, scripts, captions, and hooks in the content language I choose. Keep project memory only in memory/ inside this folder. Do not publish, build in Canva, or render full resolution unless I explicitly say yes.
+```
+
+Answer every question. Onboarding ends when `memory/config.md` says `status: ready`. If you already publish, the agent reads those profiles before the rest of the interview.
 
 System files stay in English. The agent talks in the language you use. Posts, scripts, and captions are written in the content language you chose.
 
-## 2. What is here
+## What is here
 
 | Path | Role |
 |---|---|
@@ -23,12 +37,13 @@ System files stay in English. The agent talks in the language you use. Posts, sc
 | `ferramentas/` | Local tools. |
 | `conteudo/` | Canonical pieces when storage is markdown. |
 | `referencia/pesquisas/` | Research output. |
+| `referencia/perfil-atual/` | What onboarding read from profiles you already publish. |
 | `freebies/` | One folder per lead magnet, from the mold in `freebies/README.md`. |
 | `gravações/` | Local video input. Gitignored. Empty in the template. |
 
 Notion and Canva are optional. Onboarding records which one you use. Markdown in `conteudo/` is the fallback.
 
-## 3. Requirements
+## Requirements
 
 macOS is what the scripts were written for. Python 3.10+, ffmpeg, git, and Node are the base.
 
@@ -40,7 +55,7 @@ Whisper is required only if onboarding chose local transcription. ElevenLabs is 
 
 Video edits expect a local video skill that can transcribe, cut, and render, installed where your agent loads skills. The pipeline names that skill `local-video-use`.
 
-## 4. Accounts and cost
+## Accounts and cost
 
 | Item | When | Cost |
 |---|---|---|
@@ -54,7 +69,7 @@ Video edits expect a local video skill that can transcribe, cut, and render, ins
 | PilotDM | If Instagram DM automation is yes | Free tier exists |
 | GitHub | To publish or share a tool | Their plan |
 
-## 5. Local tools
+## Local tools
 
 Each tool has a README in its folder. Third-party clones are gitignored. Re-clone them when you want that tool:
 
@@ -67,14 +82,14 @@ Session files and browser exports stay out of git. See `.gitignore`.
 
 Onboarding runs the install check for every tool you set to yes. A failed check does not finish onboarding.
 
-## 6. Rules for every agent
+## Rules for every agent
 
 - Do not publish, build in Canva, or render a full-resolution video without an explicit yes.
 - Do not store project memory outside `memory/`.
 - Do not switch Notion or Canva off because a login failed. Stop and ask.
 - Corrections that are reusable preferences get saved in `memory/` immediately.
 
-## 7. Quick check
+## Quick check
 
 ```bash
 python3 onboarding/test_leak_check.py
