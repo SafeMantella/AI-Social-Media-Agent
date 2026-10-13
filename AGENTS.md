@@ -13,6 +13,8 @@ Stop and follow `onboarding/interview.md` when any of these is true:
 - a required key is missing, empty, or not an allowed value
 - any brand file below still contains `FILL VIA ONBOARDING`
 - `dm_automation` is `yes` and `memory/dm-automation.md` does not contain a trigger word and both messages
+- `existing_content` is `yes` and `referencia/perfil-atual/RESUMO.md` is missing
+- `existing_content` is `yes` and `memory/edicao-observada.md` has no `decision: keep` or `decision: change`
 
 Do no other work until `status` is `ready`. Ask one question at a time, in the language the creator is writing in. Write each answer immediately. If the conversation stops, resume at the first unanswered required question.
 
@@ -22,7 +24,7 @@ Allowed values:
 - `storage`: `notion` or `md`
 - `carousel`: `canva` or `md`
 - `transcription`: `whisper` or `elevenlabs`
-- `last30days`, `instagram_research`, `grok_image`, `dm_automation`, `behind_the_scenes`, `face`: `yes` or `no`
+- `last30days`, `instagram_research`, `grok_image`, `dm_automation`, `behind_the_scenes`, `face`, `existing_content`: `yes` or `no`
 - `reddit`: `no`, `manual`, or `auto`
 - `content_language`: the language name the creator gave
 - `brand_name`: non-empty

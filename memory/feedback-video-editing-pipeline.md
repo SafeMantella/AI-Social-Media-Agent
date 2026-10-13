@@ -4,6 +4,8 @@ From the uncut master to a publishable cut, in this order. Post order is fixed: 
 
 `face` in `memory/config.md` controls face-specific checks. When it is `no`, skip rules whose only job is to keep a face visible or to cover it. Captions still go on.
 
+When `memory/edicao-observada.md` says `decision: keep`, match that recipe: the open, the cut density, the on-screen text, the color, and the job of the caption. The creator still cuts and still returns `base.mp4`. A later correction from the creator overrides the recipe. When the decision is `change`, or the file does not exist, do not copy the old edit.
+
 1. Transcribe with the engine in `transcription`. Skill `transcricao-confiavel`. Cache at `transcripts/master.json`. See `memory/diretrizes-transcricao.md`.
 2. Check completeness. Whisper with two local engines: diff the transcripts. One local engine, or ElevenLabs: check timings and say that a second engine was not available.
 3. Correct the transcript in `transcripts/master.json`. Show the cues to the creator before rendering captions.

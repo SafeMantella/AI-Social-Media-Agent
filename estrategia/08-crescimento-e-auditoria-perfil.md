@@ -6,7 +6,7 @@ The goal in `estrategia/01-posicionamento-e-pilares.md` decides what "growth" is
 
 ## 1. Audit the live profile
 
-Do this on every platform in `memory/social_media_handles.md`. Write the findings in the chat and, if the creator agrees, fix the profile in the same session. Do not paste the old bio into this file.
+Do this on every platform in `memory/social_media_handles.md`. If `referencia/perfil-atual/RESUMO.md` already exists, start from that note and re-open the pages. Write the findings in the chat and, if the creator agrees, fix the profile in the same session. Do not paste the old bio into this file.
 
 ### Bio
 

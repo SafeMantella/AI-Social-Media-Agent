@@ -11,6 +11,8 @@ Read the file when the task touches it. `AGENTS.md` stays short on purpose.
 - `memory/estilo-de-escrita/exemplos.md` — samples
 - `memory/project_social_media_status.md` — map of the repo
 - `memory/dm-automation.md` — created only when DM automation is yes
+- `memory/edicao-observada.md` — created only when they already publish; `keep` or `change`
+- `referencia/perfil-atual/RESUMO.md` — what the profile read actually saw
 
 ## Pipelines
 

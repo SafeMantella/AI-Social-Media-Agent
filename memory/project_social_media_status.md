@@ -13,6 +13,8 @@ Read this after onboarding. Numbers, handles, and the niche are not in this file
 - `estrategia/marca/ids.md` — Canva ids, or the note that Canva is not used.
 - `conteudo/` — pieces when `storage` is `md`.
 - `referencia/pesquisas/` — research.
+- `referencia/perfil-atual/` — onboarding read of profiles they already publish. Empty until then.
+- `memory/edicao-observada.md` — whether new videos keep that edit. Created only when the read happened.
 - `freebies/` — lead magnets.
 - `gravações/` — local video. Gitignored.
 

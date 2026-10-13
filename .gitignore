@@ -48,3 +48,8 @@ gravações/
 # Author planning and local agent settings do not ship
 docs/superpowers/
 .claude/settings.json
+
+# Frames from the onboarding profile read. The markdown notes stay.
+referencia/perfil-atual/**/*.jpg
+referencia/perfil-atual/**/*.jpeg
+referencia/perfil-atual/**/*.png

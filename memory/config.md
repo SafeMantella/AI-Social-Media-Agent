@@ -1,6 +1,7 @@
 status: empty
 content_language:
 brand_name:
+existing_content:
 storage:
 carousel:
 transcription:

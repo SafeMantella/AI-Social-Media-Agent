@@ -6,7 +6,7 @@ An empty system for one creator. The first time a coding agent opens this folder
 
 ## 1. First open
 
-Open the folder in your coding agent and say you are here. If `memory/config.md` says `status: empty`, the agent interviews you. One question at a time. Answer all of them. `status: ready` is the end of onboarding.
+Open the folder in your coding agent and say you are here. If `memory/config.md` says `status: empty`, the agent interviews you. One question at a time. If you already publish, it reads those profiles before the rest of the interview. Answer all of them. `status: ready` is the end of onboarding.
 
 System files stay in English. The agent talks in the language you use. Posts, scripts, and captions are written in the content language you chose.
 
