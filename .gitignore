@@ -1,0 +1,50 @@
+# OS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node
+node_modules/
+
+# Heavy media. Track edit notes (.json/.md), not the media.
+*.mov
+*.mp4
+*.webm
+*.wav
+*.mp3
+*.m4a
+*.flac
+*.zip
+
+# Third-party clones
+ferramentas/last30days-skill/
+ferramentas/fontastic-text-image-generator/
+
+# Tool output and session files
+ferramentas/instagram-transcript/downloads/
+ferramentas/instagram-transcript/transcripts/
+ferramentas/instagram-transcript/ig_cookies.txt
+ferramentas/instagram-transcript/batch_salvos_ia.progress
+ferramentas/instagram-transcript/batch_salvos_ia.failed
+ferramentas/instagram-transcript/batch_salvos_ia.nohup
+ferramentas/pdf-to-markdown/output/
+ferramentas/minet/cookies.txt
+ferramentas/reddit-answers/.profile/
+*.log
+
+# Reference libraries
+books/
+*.epub
+*.pdf
+
+# Local-only trees
+site/
+gravações/
+
+# Author planning and local agent settings do not ship
+docs/superpowers/
+.claude/settings.json

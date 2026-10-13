@@ -1,0 +1,5 @@
+#!/bin/sh
+# Wrapper — roda o minet do venv isolado desta pasta (Python 3.12, via uv).
+# Motivo do venv: minet 4.x depende de twitter==2.0a2 (pré-release) e de libs que
+# não compilam no Python 3.13 do sistema; fica isolado do Python global.
+exec "$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)/.venv/bin/minet" "$@"

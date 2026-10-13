@@ -1,0 +1,6 @@
+#!/bin/sh
+# Wrapper — roda o scrapling do venv isolado desta pasta.
+# Motivo do venv: scrapling[fetchers] exige curl_cffi>=0.16.1, que quebra o
+# impersonation de TikTok/IG do yt-dlp (ferramentas/instagram-transcript/,
+# yt-dlp exige curl_cffi<0.16). Os dois não convivem no Python global.
+exec "$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)/.venv/bin/scrapling" "$@"

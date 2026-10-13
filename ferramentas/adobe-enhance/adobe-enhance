@@ -1,0 +1,68 @@
+#!/usr/bin/env python3
+"""Passos mecânicos do pipeline Adobe Podcast (upload/download seguem no browser).
+
+  adobe-enhance preparar <pasta-do-tema>   raw/*.mp4 -> edit/audio/<stem>.mp3 (128k, p/ upload no Adobe)
+  adobe-enhance juntar   <pasta-do-tema>   temps do Downloads -> edit/audio/<stem>-enhanced.mp3
+                                           + edit/<stem>-enhanced.mp4 (vídeo original copiado, áudio trocado)
+Ver memory/pipeline-limpeza-audio-corte-silencio.md (passos 2, 3 e 3b).
+"""
+import glob, os, shutil, subprocess, sys
+
+LIMITE = 10 * 1024 * 1024  # file_upload do claude-in-chrome: <10 MB por chamada
+DOWNLOADS = os.path.expanduser("~/Downloads")
+
+
+def dur(path):
+    out = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
+                          "-of", "csv=p=0", path], capture_output=True, text=True, check=True)
+    return float(out.stdout)
+
+
+def stems(tema):
+    return sorted(os.path.splitext(os.path.basename(p))[0]
+                  for p in glob.glob(os.path.join(tema, "raw", "*.mp4")))
+
+
+def preparar(tema):
+    os.makedirs(os.path.join(tema, "edit", "audio"), exist_ok=True)
+    for s in stems(tema):
+        mp3 = os.path.join(tema, "edit", "audio", s + ".mp3")
+        subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", os.path.join(tema, "raw", s + ".mp4"),
+                        "-vn", "-c:a", "libmp3lame", "-b:a", "128k", mp3], check=True)
+        tam = os.path.getsize(mp3)
+        aviso = "  ⚠ >10 MB, não cabe num file_upload" if tam > LIMITE else ""
+        print(f"{s}.mp3  {tam/1e6:.1f} MB  {dur(mp3):.1f}s{aviso}")
+
+
+def juntar(tema):
+    temps = glob.glob(os.path.join(DOWNLOADS, ".com.brave.Browser.*"))
+    pendentes = [s for s in stems(tema)
+                 if not os.path.exists(os.path.join(tema, "edit", "audio", s + "-enhanced.mp3"))]
+    if not temps:
+        sys.exit("nenhum temp .com.brave.Browser.* em ~/Downloads (download ainda em curso?)")
+    # casa cada temp com o stem de duração mais próxima (Adobe preserva a duração ±0.2s)
+    usados = set()
+    for s in pendentes:
+        d = dur(os.path.join(tema, "raw", s + ".mp4"))
+        cand = sorted((abs(dur(t) - d), t) for t in temps if t not in usados)
+        if not cand or cand[0][0] > 0.5:
+            print(f"{s}: sem temp com duração ~{d:.1f}s, pulando")
+            continue
+        t = cand[0][1]
+        usados.add(t)
+        mp3 = os.path.join(tema, "edit", "audio", s + "-enhanced.mp3")
+        shutil.move(t, mp3)
+        mp4 = os.path.join(tema, "edit", s + "-enhanced.mp4")
+        subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", os.path.join(tema, "raw", s + ".mp4"),
+                        "-i", mp3, "-map", "0:v:0", "-map", "1:a:0", "-c:v", "copy", "-c:a", "aac",
+                        "-b:a", "320k", "-movflags", "+faststart", "-map_metadata", "0", mp4], check=True)
+        print(f"{s}: ok  (vídeo {dur(mp4):.2f}s, áudio {dur(mp3):.2f}s)")
+    sobra = [t for t in temps if t not in usados]
+    if sobra:
+        print(f"{len(sobra)} temp(s) sobrando em ~/Downloads (duplicata de clique? conferir e `trash`)")
+
+
+if __name__ == "__main__":
+    if len(sys.argv) != 3 or sys.argv[1] not in ("preparar", "juntar"):
+        sys.exit(__doc__)
+    {"preparar": preparar, "juntar": juntar}[sys.argv[1]](sys.argv[2])

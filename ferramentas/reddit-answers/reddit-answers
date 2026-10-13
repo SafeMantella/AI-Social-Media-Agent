@@ -1,0 +1,4 @@
+#!/bin/sh
+# Wrapper — usa o venv do Scrapling (já tem patchright + chromium).
+D="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
+exec "$D/../scrapling/.venv/bin/python" "$D/reddit_answers.py" "$@"
