@@ -13,16 +13,16 @@ One prompt. Copy the block and send it as the first message.
 ```
 Set up this folder as my social-media system. This message is the setup. There is no separate install step.
 
-Read AGENTS.md and follow it. Read memory/config.md. If status is not ready, follow onboarding/interview.md from the first unanswered question and do no other work. Ask me one question at a time, in the language I am using. Write each answer into the file the interview names, immediately. If I already publish, open those profiles and finish the profile read before you ask about niche, voice, or visuals. Propose only from what you actually saw. Run the install check for every tool I set to yes. A failed check does not finish. Do not set status to ready until every required answer is written and every check has passed.
+Read AGENTS.md and follow it. Read memory/config.md. If status is not ready, follow onboarding/interview.md and do no other work. The first question is the language of the whole system. After I answer, run the language pass in that file before you ask anything else: rewrite every project markdown file into that language, rename the creator-facing folders and markdown filenames to match, and update every reference. Config keys, the marker FILL VIA ONBOARDING, and code file names stay as they are. Then continue the interview, one question at a time, in that language. Write each answer into the file the interview names, immediately. If I already publish, open those profiles and finish the profile read before you ask about niche, voice, or visuals. Propose only from what you actually saw. Run the install check for every tool I set to yes. A failed check does not finish. Do not set status to ready until every required answer is written and every check has passed.
 
 If status is already ready, do not interview me again. Read memory/project_social_media_status.md and wait for a task.
 
-System files stay in English. Write posts, scripts, captions, and hooks in the content language I choose. Keep project memory only in memory/ inside this folder. Do not publish, build in Canva, or render full resolution unless I explicitly say yes.
+Keep project memory only in memory/ inside this folder, using the folder name from the language pass if it was renamed. Do not publish, build in Canva, or render full resolution unless I explicitly say yes.
 ```
 
 Answer every question. Onboarding ends when `memory/config.md` says `status: ready`. If you already publish, the agent reads those profiles before the rest of the interview.
 
-System files stay in English. The agent talks in the language you use. Posts, scripts, and captions are written in the content language you chose.
+The first answer sets the language. The agent rewrites the markdown and the creator-facing folders into that language, then continues the interview. Posts use the same language.
 
 ## What is here
 

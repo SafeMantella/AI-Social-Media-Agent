@@ -2,7 +2,7 @@
 
 Follow this on the first open, and whenever `memory/config.md` is not `ready`.
 
-Ask one question at a time, in the language the creator is writing in. Write the system files in English. Keep the creator's own words for their niche, promise, voice samples, and bios.
+Ask one question at a time. Question 1 chooses the language. Until the language pass below is finished, ask that question in the language the creator is already writing in. After the pass, ask every later question in `content_language`. Keep the creator's own words for their niche, promise, voice samples, and bios.
 
 Write each answer immediately, then ask the next unanswered question. If the creator answers several questions in one message, write what is already clear and ask only what is missing. If an answer is vague, reflect it in one sentence and wait for a yes before writing. If a new answer contradicts an earlier one, the file keeps the new answer.
 
@@ -12,9 +12,44 @@ Remove the line `FILL VIA ONBOARDING` from a section when you replace it. `statu
 
 ## Questions
 
-1. Content language. The language of posts, scripts, captions, and hooks. Write `content_language` in `memory/config.md`.
+1. Language. One language for the whole system and for posts, scripts, captions, and hooks. Write `content_language` in `memory/config.md`. Do not ask question 2 until the language pass is finished.
 
-2. Brand name. Write `brand_name` and the Brand name section of `estrategia/01-posicionamento-e-pilares.md`.
+## Language pass
+
+Do this immediately after question 1, before question 2. Also do it when `content_language` is set and `files_language` is empty or different. Skipping it does not finish onboarding. If the conversation stops, resume here.
+
+The template ships with English prose and a mix of English and Portuguese names. After this pass, one language is in the tree: `content_language`.
+
+Translate the prose of every project markdown file into that language. Skip `.git`, `venv`, `.venv`, `node_modules`, `site-packages`, and downloaded media. Translate tool READMEs. Do not translate source code.
+
+Rename creator-facing folders and markdown filenames into that language, then update every reference in the same pass. Do not finish while a markdown file still points at an old path.
+
+Use this map. The column for `content_language` is the target. Any other language uses the same rows, with the names translated, and does not keep the English or Portuguese name.
+
+| Path now | English | Portuguese |
+|---|---|---|
+| `estrategia` | `strategy` | `estrategia` |
+| `conteudo` | `content` | `conteudo` |
+| `conteudo/ideias` | `content/ideas` | `conteudo/ideias` |
+| `conteudo/roteiros` | `content/scripts` | `conteudo/roteiros` |
+| `conteudo/carrosseis` | `content/carousels` | `conteudo/carrosseis` |
+| `conteudo/legendas` | `content/captions` | `conteudo/legendas` |
+| `referencia` | `reference` | `referencia` |
+| `referencia/pesquisas` | `reference/research` | `referencia/pesquisas` |
+| `referencia/perfil-atual` | `reference/current-profile` | `referencia/perfil-atual` |
+| `gravações` | `recordings` | `gravações` |
+| `memory` | `memory` | `memoria` |
+| `freebies` | `freebies` | `iscas` |
+| `onboarding` | `onboarding` | `onboarding` |
+| `onboarding/interview.md` | `onboarding/interview.md` | `onboarding/entrevista.md` |
+
+Translate every other markdown filename that is not already in `content_language`, and update the references. Leave these names as they are: `AGENTS.md`, `CLAUDE.md`, `SKILL.md`, `README.md`, `.gitignore`. Keep one README in the chosen language and remove the other language's README. Do not rename anything inside `ferramentas/`. A virtual environment lives there, and renaming it breaks the tools. Translate only the READMEs in that tree.
+
+Leave these tokens exactly as written, including inside the translated files. The gate looks for them: keys and allowed values in `memory/config.md`, `FILL VIA ONBOARDING`, `decision: keep`, `decision: change`. Command flags and script filenames stay as they are.
+
+When the prose is in `content_language`, the renamed paths are the only paths in the markdown, and `AGENTS.md` still contains those tokens, write `files_language` with the same value as `content_language`. Then continue at question 2 of the interview in that language. Do not ask question 1 again.
+
+2. Brand name. Write `brand_name` and the Brand name section of `estrategia/01-posicionamento-e-pilares.md`. The path is the one from the language pass if this file was renamed.
 
 3. Already publishing? Yes or no. Write `existing_content` in `memory/config.md`. `no` skips question 4 and the profile read.
 

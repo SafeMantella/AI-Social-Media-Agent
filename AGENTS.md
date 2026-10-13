@@ -1,6 +1,6 @@
 # How to work in this project
 
-This folder is a social-media system for one creator. The layout stays. The brand is empty until onboarding fills it.
+This folder is a social-media system for one creator. The brand is empty until onboarding fills it. The language pass may rename creator-facing folders. Their jobs stay.
 
 ## First open
 
@@ -15,8 +15,9 @@ Stop and follow `onboarding/interview.md` when any of these is true:
 - `dm_automation` is `yes` and `memory/dm-automation.md` does not contain a trigger word and both messages
 - `existing_content` is `yes` and `referencia/perfil-atual/RESUMO.md` is missing
 - `existing_content` is `yes` and `memory/edicao-observada.md` has no `decision: keep` or `decision: change`
+- `content_language` is set and `files_language` is empty or not the same value
 
-Do no other work until `status` is `ready`. Ask one question at a time, in the language the creator is writing in. Write each answer immediately. If the conversation stops, resume at the first unanswered required question.
+Do no other work until `status` is `ready`. Ask one question at a time. Question 1 is the language. After the language pass, ask in `content_language`. Write each answer immediately. If the conversation stops, resume at the first unanswered required question, or at the language pass if `files_language` does not match.
 
 Allowed values:
 
@@ -26,7 +27,8 @@ Allowed values:
 - `transcription`: `whisper` or `elevenlabs`
 - `last30days`, `instagram_research`, `grok_image`, `dm_automation`, `behind_the_scenes`, `face`, `existing_content`: `yes` or `no`
 - `reddit`: `no`, `manual`, or `auto`
-- `content_language`: the language name the creator gave
+- `content_language`: the language name the creator gave. This is the language of the system and of published content
+- `files_language`: the same language name, written only after the language pass in `onboarding/interview.md`
 - `brand_name`: non-empty
 
 Brand files that must be filled:
@@ -41,7 +43,7 @@ Brand files that must be filled:
 
 Read `memory/project_social_media_status.md`, then the pipeline for the task.
 
-System files are English. Talk to the creator in the language they are using. Write posts, scripts, captions, and hooks in `content_language`.
+After the language pass, the markdown files and the creator-facing folders are in `content_language`. Talk to the creator in that language. Write new notes, posts, scripts, captions, and hooks in it too. Config keys and the marker `FILL VIA ONBOARDING` stay as written.
 
 ## Memory
 

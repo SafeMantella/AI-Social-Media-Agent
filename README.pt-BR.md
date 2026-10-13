@@ -4,7 +4,7 @@ Um sistema vazio para um criador. Cole o prompt abaixo no agente de código que 
 
 English: [README.md](README.md)
 
-`AGENTS.md` é o arquivo de entrada. `CLAUDE.md` aponta para ele. Os arquivos do sistema ficam em inglês. O agente fala a língua que você usa.
+`AGENTS.md` é o arquivo de entrada. `CLAUDE.md` aponta para ele. A primeira resposta define o idioma. O agente reescreve os markdown e as pastas que você lê nesse idioma, e só então segue a entrevista.
 
 ## Cole isto
 
@@ -13,11 +13,11 @@ Um prompt só. Copie o bloco e envie como primeira mensagem.
 ```
 Configure esta pasta como o meu sistema de rede social. Esta mensagem é a configuração. Não existe um passo de instalação separado.
 
-Leia AGENTS.md e siga o arquivo. Leia memory/config.md. Se status não for ready, siga onboarding/interview.md a partir da primeira pergunta sem resposta e não faça outro trabalho. Faça uma pergunta por vez, em português. Grave cada resposta no arquivo que a entrevista indicar, na hora. Se eu já publico, abra esses perfis e termine a leitura deles antes de perguntar nicho, voz ou visual. Proponha só a partir do que você de fato viu. Rode a checagem de instalação de cada ferramenta que eu marcar como sim. Checagem que falha não termina. Não marque status como ready enquanto faltar resposta obrigatória ou checagem.
+Leia AGENTS.md e siga o arquivo. Leia memory/config.md. Se status não for ready, siga onboarding/interview.md e não faça outro trabalho. A primeira pergunta é o idioma do sistema inteiro. Depois que eu responder, rode a passagem de idioma desse arquivo antes de perguntar qualquer outra coisa: reescreva cada markdown do projeto nesse idioma, renomeie as pastas e os arquivos markdown que eu leio para combinar, e atualize cada referência. As chaves de configuração, o marcador FILL VIA ONBOARDING e os nomes dos arquivos de código ficam como estão. Depois continue a entrevista, uma pergunta por vez, nesse idioma. Grave cada resposta no arquivo que a entrevista indicar, na hora. Se eu já publico, abra esses perfis e termine a leitura deles antes de perguntar nicho, voz ou visual. Proponha só a partir do que você de fato viu. Rode a checagem de instalação de cada ferramenta que eu marcar como sim. Checagem que falha não termina. Não marque status como ready enquanto faltar resposta obrigatória ou checagem.
 
 Se status já for ready, não me entreviste de novo. Leia memory/project_social_media_status.md e espere uma tarefa.
 
-Os arquivos do sistema continuam em inglês. Escreva posts, roteiros, legendas e ganchos no idioma de conteúdo que eu escolher. A memória do projeto fica só em memory/ dentro desta pasta. Não publique, não monte no Canva e não renderize em resolução final sem um sim explícito meu.
+A memória do projeto fica só em memory/ dentro desta pasta, no nome de pasta que a passagem de idioma tiver deixado. Não publique, não monte no Canva e não renderize em resolução final sem um sim explícito meu.
 ```
 
 Responda todas as perguntas. O onboarding termina quando `memory/config.md` diz `status: ready`. Se você já publica, o agente lê esses perfis antes do resto da entrevista.
