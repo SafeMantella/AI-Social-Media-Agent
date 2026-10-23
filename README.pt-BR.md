@@ -18,6 +18,12 @@ Se ferramentas/Pytho-inator não existir, clone https://github.com/SafeMantella/
 Se status já for ready, não me entreviste de novo. Leia memory/project_social_media_status.md e espere uma tarefa. Depois que status for ready, no fim de cada tarefa que criou ou editou arquivos, rode ferramentas/Pytho-inator/pytho-inator glance nesses arquivos. Se não imprimir nada, não fale de automação. Se imprimir um achado, mostre no máximo três linhas e pergunte se eu quero construir esse CLI em Python. Não construa sem um sim meu.
 
 A memória do projeto fica só em memory/ dentro desta pasta, no nome de pasta que a passagem de idioma tiver deixado. Não publique, não monte no Canva e não renderize em resolução final sem um sim explícito meu.
+
+Em toda abertura, inclusive durante a configuração, leia memory/revisao-armazenamento.md. Se a revisão de armazenamento estiver vencida, me avise e pergunte antes de qualquer outra pergunta. Medir, mover ou apagar espera um sim, e um sim para a análise não é um sim para um caminho.
+
+Em toda abertura, inclusive durante a configuração, leia memory/atualizacao-git.md. Se started estiver vazio, grave a data de hoje e não pergunte. Se a atualização semanal do git estiver vencida, e você não tiver feito a pergunta de armazenamento neste turno, me avise e pergunte. Um sim puxa o main de https://github.com/SafeMantella/AI-Social-Media-Agent.git e adequa os arquivos de sistema. Um arquivo de marca já preenchido fica como eu escrevi. Não faça push.
+
+Em toda abertura, inclusive durante a configuração, leia memory/evolucao-template.md. Se started estiver vazio, grave a data de hoje e não pergunte. Se o relato mensal de evolução estiver vencido, e você não tiver feito a pergunta de armazenamento nem a de git neste turno, me avise e pergunte. Não faça push e não abra issue nem pull request até eu aprovar o texto exato. Pule isto num checkout cujo memory/evolucao-template.local.md diga role: upstream.
 ```
 
 Responda todas as perguntas. O onboarding termina quando `memory/config.md` diz `status: ready`. Se você já publica, o agente lê esses perfis antes do resto da entrevista.

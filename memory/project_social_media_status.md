@@ -47,3 +47,15 @@ After `status` is `ready`, a task that created or edited files ends with `ferram
 ## Approval
 
 The creator approves before anything is scheduled or published.
+
+## Storage
+
+This folder collects virtualenvs, downloads, frames, and renders. On every open, read `memory/revisao-armazenamento.md`. When the review is due, warn and ask before other work. The measurement and the file changes are two separate yeses. The procedure is `.claude/commands/revisar-armazenamento.md`.
+
+## Git update
+
+On every open, read `memory/atualizacao-git.md`. When the weekly pull is due, warn and ask before other work, after the storage question if that one is also due. A yes follows `.claude/commands/atualizar-do-git.md`. Filled brand files stay. Nothing is pushed.
+
+## Evolution
+
+A client copy reports generalizable system changes upstream once a month. On every open, read `memory/evolucao-template.md`. The draft and the send are two separate yeses. The procedure is `.claude/commands/reportar-evolucao.md`. The outreach prompt for copies already in use is `docs/prompt-relato-evolucao.md`.

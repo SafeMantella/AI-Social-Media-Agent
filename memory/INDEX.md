@@ -28,6 +28,9 @@ Read the file when the task touches it. `AGENTS.md` stays short on purpose.
 - `memory/feedback-cta-palavra-comentario-caps-sem-acento.md` — comment-word CTA
 - `memory/feedback_ask_dont_assume_creative_fixes.md` — ask on ambiguous creative fixes
 - `memory/regras-projeto.md` — posture, storage, tools
+- `memory/revisao-armazenamento.md` — weekly disk review; the procedure is `.claude/commands/revisar-armazenamento.md`
+- `memory/atualizacao-git.md` — weekly pull from the template; the procedure is `.claude/commands/atualizar-do-git.md`
+- `memory/evolucao-template.md` — monthly sanitized report to the template; the procedure is `.claude/commands/reportar-evolucao.md`
 
 ## Video detail
 

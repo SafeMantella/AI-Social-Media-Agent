@@ -18,6 +18,12 @@ If ferramentas/Pytho-inator is missing, clone https://github.com/SafeMantella/Py
 If status is already ready, do not interview me again. Read memory/project_social_media_status.md and wait for a task. After status is ready, at the end of each task that created or edited files, run ferramentas/Pytho-inator/pytho-inator glance on those files. If it prints nothing, say nothing about automation. If it prints a hit, show at most three lines and ask whether to build that Python CLI. Do not build it unless I say yes.
 
 Keep project memory only in memory/ inside this folder, using the folder name from the language pass if it was renamed. Do not publish, build in Canva, or render full resolution unless I explicitly say yes.
+
+On every open, including during setup, read memory/revisao-armazenamento.md. If the storage review is due, warn me and ask before any other question. A scan, a move, or a deletion waits for a yes, and a yes to the scan is not a yes to a path.
+
+On every open, including during setup, read memory/atualizacao-git.md. If started is empty, write today's date and do not ask. If the weekly git update is due, and you did not already ask the storage question this turn, warn me and ask. A yes pulls main from https://github.com/SafeMantella/AI-Social-Media-Agent.git and adapts the system files. A filled brand file stays as I wrote it. Do not push.
+
+On every open, including during setup, read memory/evolucao-template.md. If started is empty, write today's date and do not ask. If the monthly evolution report is due, and you did not already ask the storage question or the git-update question this turn, warn me and ask. Do not push, and do not open an issue or a pull request, until I approve the exact text. Skip this on a checkout whose memory/evolucao-template.local.md says role: upstream.
 ```
 
 Answer every question. Onboarding ends when `memory/config.md` says `status: ready`. If you already publish, the agent reads those profiles before the rest of the interview.

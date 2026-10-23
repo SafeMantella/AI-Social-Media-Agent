@@ -21,6 +21,12 @@ Do no other work until `status` is `ready`. Ask one question at a time. Question
 
 One setup step is allowed during that stop. If `ferramentas/Pytho-inator/pytho-inator` is missing, clone `https://github.com/SafeMantella/Pytho-inator.git` into `ferramentas/Pytho-inator` and make the wrapper executable. Do not edit the clone. Do not run it until `status` is `ready`.
 
+On every open, including during that stop, read `memory/revisao-armazenamento.md`. The storage review is due when `last_review` is empty or older than `due_days`, and `defer_until` is empty or already past. When you give the warning, write `asked_on` as today. If `asked_on` is already today, do not ask again today. When it is due, warn before any other question and ask to run the review. A later with a date writes `defer_until`. Neither a later nor the warning moves a file or counts as a review. A yes follows `.claude/commands/revisar-armazenamento.md`. Nothing is moved, trashed, or deleted until the creator approves those paths.
+
+On every open, including during that stop, read `memory/atualizacao-git.md`. If `started` is empty, write today's date and do not warn. The git update is due when `last_pull` is empty and `started` is older than `due_days`, or when `last_pull` is older than `due_days`, and `defer_until` is empty or already past. If the storage review is also due and has not been asked today, ask that one and do not ask this one in the same turn. When you give the warning, write `asked_on` as today. If `asked_on` is already today, do not ask again today. A later with a date writes `defer_until`. Neither a later nor the warning pulls. A yes follows `.claude/commands/atualizar-do-git.md`. A filled brand file stays as this copy wrote it. Nothing is pushed.
+
+On every open, including during that stop, read `memory/evolucao-template.md`. Skip this check when `memory/evolucao-template.local.md` contains `role: upstream`. If `started` is empty, write today's date and do not warn. The evolution report is due when `last_report` is empty and `started` is older than `due_days`, or when `last_report` is older than `due_days`, and `defer_until` is empty or already past. If the storage review or the git update is also due and has not been asked today, ask the earlier one and do not ask this one in the same turn. Storage comes before the git update. When you give the warning, write `asked_on` as today. If `asked_on` is already today, do not ask again today. A later with a date writes `defer_until`. Neither a later nor the warning publishes anything or counts as a report. A yes follows `.claude/commands/reportar-evolucao.md`. Nothing is pushed, and no issue or pull request is opened, until the creator approves the exact text.
+
 Allowed values:
 
 - `status`: `empty` or `ready`
@@ -89,6 +95,9 @@ Ask the agent to read the file and follow it:
 - `.claude/commands/aplicar-idioma.md` once, after the onboarding readback, before `status: ready`
 - `.claude/commands/map-automation-opportunities.md` once `status` is `ready`
 - `.claude/commands/check-skills.md` once `status` is `ready`
+- `.claude/commands/revisar-armazenamento.md` when the storage review is due, or when the creator asks
+- `.claude/commands/atualizar-do-git.md` when the git update is due, or when the creator asks
+- `.claude/commands/reportar-evolucao.md` when the evolution report is due, or when the creator asks. Skip on the maintainer checkout
 
 ## Skills
 

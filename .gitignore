@@ -50,6 +50,10 @@ gravações/
 docs/superpowers/
 .claude/settings.json
 
+# Client evolution draft, and the maintainer flag on the canonical checkout
+memory/relato-evolucao.md
+memory/evolucao-template.local.md
+
 # Frames from the onboarding profile read. The markdown notes stay.
 referencia/perfil-atual/**/*.jpg
 referencia/perfil-atual/**/*.jpeg

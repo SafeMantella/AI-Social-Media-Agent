@@ -29,3 +29,15 @@ Switches for the optional collectors live in `memory/config.md`: `last30days`, `
 ## 5. One agent does the work
 
 The same agent frames, collects, checks the files, and writes. A second agent is optional and never required. Do not hand off a carousel, a script, a caption, or anything that needs the creator's voice.
+
+## 6. Disk
+
+The weekly storage review is `.claude/commands/revisar-armazenamento.md`. The date lives in `memory/revisao-armazenamento.md`. A due review is a warning and a question. It is not permission to move, trash, or delete. The creator approves the paths.
+
+## 7. Git update
+
+Once a week this folder pulls `main` from `https://github.com/SafeMantella/AI-Social-Media-Agent.git` and adapts the system files. The procedure is `.claude/commands/atualizar-do-git.md`. The date lives in `memory/atualizacao-git.md`. A due update is a warning and a question. A filled brand file stays as this copy wrote it. Nothing is pushed.
+
+## 8. Evolution
+
+Once a month a client copy compares itself with the template and drafts a sanitized report. The procedure is `.claude/commands/reportar-evolucao.md`. The date lives in `memory/evolucao-template.md`. Brand, content, research, and credentials stay in the copy. An issue on `SafeMantella/AI-Social-Media-Agent` is the intake. A pull request from the client copy is not. The maintainer turns an accepted issue into a change on the template. Nothing is sent until the creator approves the exact text.
