@@ -1,5 +1,0 @@
-{
-  "name": "social-tools",
-  "owner": { "name": "template" },
-  "plugins": [{ "name": "token-saver", "source": "./" }]
-}

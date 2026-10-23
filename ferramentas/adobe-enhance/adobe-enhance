@@ -1,68 +1,52 @@
 #!/usr/bin/env python3
-"""Passos mecânicos do pipeline Adobe Podcast (upload/download seguem no browser).
+"""Adobe Podcast Enhance no layout raw/ -> edit/ deste projeto.
+O trabalho é do repo público clonado em ferramentas/adobe-podcast/ (enhance.py);
+aqui só se escolhe pastas e o venv do Scrapling (já tem patchright + chromium).
 
-  adobe-enhance preparar <pasta-do-tema>   raw/*.mp4 -> edit/audio/<stem>.mp3 (128k, p/ upload no Adobe)
-  adobe-enhance juntar   <pasta-do-tema>   temps do Downloads -> edit/audio/<stem>-enhanced.mp3
-                                           + edit/<stem>-enhanced.mp4 (vídeo original copiado, áudio trocado)
-Ver memory/pipeline-limpeza-audio-corte-silencio.md (passos 2, 3 e 3b).
+  adobe-enhance login                       1x: loga no Adobe na janela (sessão em .profile/, gitignored)
+  adobe-enhance run <pasta-do-tema> [--show] raw/*.mp4 -> edit/audio/<stem>-enhanced.mp3 + edit/<stem>-enhanced.mp4
+Fallback manual (UI do Adobe mudou): ferramentas/adobe-podcast/skills/adobe-podcast-enhance/SKILL.md.
 """
-import glob, os, shutil, subprocess, sys
+import json, os, pathlib, shutil, subprocess, sys
 
-LIMITE = 10 * 1024 * 1024  # file_upload do claude-in-chrome: <10 MB por chamada
-DOWNLOADS = os.path.expanduser("~/Downloads")
-
-
-def dur(path):
-    out = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration",
-                          "-of", "csv=p=0", path], capture_output=True, text=True, check=True)
-    return float(out.stdout)
+AQUI = pathlib.Path(__file__).resolve().parent
+ENHANCE = AQUI.parent / "adobe-podcast" / "enhance.py"
+PY = AQUI.parent / "scrapling" / ".venv" / "bin" / "python"
+ENV = os.environ | {"ADOBE_PROFILE": str(AQUI / ".profile")}
 
 
-def stems(tema):
-    return sorted(os.path.splitext(os.path.basename(p))[0]
-                  for p in glob.glob(os.path.join(tema, "raw", "*.mp4")))
+def enhance(*args):
+    if subprocess.run([str(PY), str(ENHANCE), *map(str, args)], env=ENV).returncode:
+        sys.exit(f"falhou: enhance.py {' '.join(map(str, args[:2]))}")
 
 
-def preparar(tema):
-    os.makedirs(os.path.join(tema, "edit", "audio"), exist_ok=True)
-    for s in stems(tema):
-        mp3 = os.path.join(tema, "edit", "audio", s + ".mp3")
-        subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", os.path.join(tema, "raw", s + ".mp4"),
-                        "-vn", "-c:a", "libmp3lame", "-b:a", "128k", mp3], check=True)
-        tam = os.path.getsize(mp3)
-        aviso = "  ⚠ >10 MB, não cabe num file_upload" if tam > LIMITE else ""
-        print(f"{s}.mp3  {tam/1e6:.1f} MB  {dur(mp3):.1f}s{aviso}")
-
-
-def juntar(tema):
-    temps = glob.glob(os.path.join(DOWNLOADS, ".com.brave.Browser.*"))
-    pendentes = [s for s in stems(tema)
-                 if not os.path.exists(os.path.join(tema, "edit", "audio", s + "-enhanced.mp3"))]
-    if not temps:
-        sys.exit("nenhum temp .com.brave.Browser.* em ~/Downloads (download ainda em curso?)")
-    # casa cada temp com o stem de duração mais próxima (Adobe preserva a duração ±0.2s)
-    usados = set()
-    for s in pendentes:
-        d = dur(os.path.join(tema, "raw", s + ".mp4"))
-        cand = sorted((abs(dur(t) - d), t) for t in temps if t not in usados)
-        if not cand or cand[0][0] > 0.5:
-            print(f"{s}: sem temp com duração ~{d:.1f}s, pulando")
-            continue
-        t = cand[0][1]
-        usados.add(t)
-        mp3 = os.path.join(tema, "edit", "audio", s + "-enhanced.mp3")
-        shutil.move(t, mp3)
-        mp4 = os.path.join(tema, "edit", s + "-enhanced.mp4")
-        subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", os.path.join(tema, "raw", s + ".mp4"),
-                        "-i", mp3, "-map", "0:v:0", "-map", "1:a:0", "-c:v", "copy", "-c:a", "aac",
-                        "-b:a", "320k", "-movflags", "+faststart", "-map_metadata", "0", mp4], check=True)
-        print(f"{s}: ok  (vídeo {dur(mp4):.2f}s, áudio {dur(mp3):.2f}s)")
-    sobra = [t for t in temps if t not in usados]
-    if sobra:
-        print(f"{len(sobra)} temp(s) sobrando em ~/Downloads (duplicata de clique? conferir e `trash`)")
+def run(tema, show):
+    tema = pathlib.Path(tema).resolve()
+    audio, trabalho = tema / "edit" / "audio", tema / "edit" / "adobe"
+    raws = sorted((tema / "raw").glob("*.mp4"))
+    if not raws:
+        sys.exit(f"sem raw/*.mp4 em {tema}")
+    for raw in raws:
+        destino = audio / f"{raw.stem}-enhanced.mp3"
+        if destino.exists():
+            print(f"{raw.stem}: já feito, pulando"); continue
+        work = trabalho / raw.stem
+        if not (work / "manifest.json").exists():
+            enhance("prepare", raw, "--out", trabalho, "--max-mb", "0")
+        enhance("upload", work, *(["--show"] if show else []))
+        enhance("replace", work, "--out-dir", tema / "edit", "--force")
+        limpo = work / json.loads((work / "manifest.json").read_text())["clean_audio"]
+        audio.mkdir(parents=True, exist_ok=True)
+        # ponytail: gravação >29 min vira várias partes e o limpo é .flac; aí o nome sai -enhanced.flac
+        shutil.copy2(limpo, destino.with_suffix(limpo.suffix))
+        print(f"{raw.stem}: ok -> edit/audio/{destino.with_suffix(limpo.suffix).name}, edit/{raw.stem}-enhanced.mp4")
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 3 or sys.argv[1] not in ("preparar", "juntar"):
+    a = sys.argv[1:]
+    if a[:1] == ["login"] and len(a) == 1:
+        enhance("login")
+    elif a[:1] == ["run"] and len(a) in (2, 3) and a[2:] in ([], ["--show"]):
+        run(a[1], a[2:] == ["--show"])
+    else:
         sys.exit(__doc__)
-    {"preparar": preparar, "juntar": juntar}[sys.argv[1]](sys.argv[2])

@@ -43,6 +43,9 @@ SKIP_DIRS = {
     "pytho-inator",
     "last30days-skill",
     "fontastic-text-image-generator",
+    # Owned-tool clones and the pre-move backup. Rewriting them dirties those repos.
+    "_repos",
+    "_old",
 }
 SKIP_FILES = {"language_paths.py", "test_language_paths.py"}
 TEXT_SUFFIXES = {

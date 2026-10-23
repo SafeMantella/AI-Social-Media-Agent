@@ -17,6 +17,7 @@ Read this after onboarding. Numbers, handles, and the niche are not in this file
 - `memory/edicao-observada.md` — whether new videos keep that edit. Created only when the read happened.
 - `freebies/` — lead magnets.
 - `gravações/` — local video. Gitignored.
+- `memory/ferramentas-repos.md` — sixteen owned tools are symlinks into `ferramentas/_repos/`. Edit them in the clone.
 
 ## Pipelines
 

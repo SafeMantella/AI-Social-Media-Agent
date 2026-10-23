@@ -24,6 +24,9 @@ SKIP_DIRS = {
     # Third-party clone. Its own text is not this template.
     "Pytho-inator",
     "pytho-inator",
+    # Owned-tool clones and the pre-move backup. Gitignored. Not template source.
+    "_repos",
+    "_old",
 }
 
 # Built by concatenation so this file does not contain the org name.

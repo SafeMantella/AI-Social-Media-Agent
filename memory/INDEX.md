@@ -51,7 +51,11 @@ Read the file when the task touches it. `AGENTS.md` stays short on purpose.
 
 ## Tools
 
+- `memory/ferramentas-repos.md` — owned tools are symlinks into five public repositories
 - `memory/adobe-podcast-repo-publico.md`
+- `memory/social-auto-upload.md` — browser upload clones and the local wrappers
+- `memory/ln-line-art.md` — vector 3D line art clone
+- `memory/evals-corte-automatico.md` — automatic-cut check
 - `memory/extrair_audio_tool.md`
 - `memory/grok_cli_tool.md`
 - `memory/last30days_case_study_research.md`

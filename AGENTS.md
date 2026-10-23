@@ -89,6 +89,10 @@ Ask the agent to read the file and follow it:
 - `.claude/commands/pesquisar.md`
 - `.claude/commands/atualizar-memoria.md`
 - `.claude/commands/atualizar-ferramentas.md`
+- `.claude/commands/comandos.md`
+- `.claude/commands/revisar-video.md`
+- `.claude/commands/edicao.md`
+- `.claude/commands/avaliar-edicao.md`
 - `.claude/commands/refinar-overlay.md`
 - `.claude/commands/sugerir-conteudo.md`
 - `.claude/commands/registrar-bastidores.md` only when `behind_the_scenes` is `yes`
@@ -105,6 +109,10 @@ Ask the agent to read the file and follow it:
 - `.claude/skills/ferramentas-locais/SKILL.md` — local tools
 - `.claude/skills/transcricao-confiavel/SKILL.md` — transcription
 - `.claude/skills/pytho-inator/SKILL.md` — map a repeated task to one local Python CLI. The folder is a symlink into the clone.
+
+## Owned tools
+
+Before changing a tool under `ferramentas/`, read `memory/ferramentas-repos.md`. Sixteen owned tools are symlinks into gitignored clones at `ferramentas/_repos/`. Keep the paths `ferramentas/<tool>/...` in skills, commands, and memory. Edit and push inside `ferramentas/_repos/<repo>/`, as SafeMantella, with the GitHub noreply address already on that repository. Never commit `venv/`, `.profile/`, `.env`, cookies, or `__pycache__/`.
 
 ## Approval
 

@@ -1,0 +1,1 @@
+https://github.com/soumatheusgomes/editonny (commit f7719de, 1.1.0) — só SKILL/references/cenas/receitas; engine, library e assets (~500MB) ficaram de fora

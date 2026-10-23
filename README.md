@@ -77,13 +77,45 @@ Video edits expect a local video skill that can transcribe, cut, and render, ins
 
 ## Local tools
 
-Each tool has a README in its folder. Third-party clones are gitignored. Re-clone them when you want that tool:
+Each tool has a README in its folder. Owned tools and third-party clones are gitignored. The sixteen owned tools are symlinks into `ferramentas/_repos/`. See `memory/ferramentas-repos.md`.
+
+```bash
+cd ferramentas
+mkdir -p _repos
+for r in token-kit video-cut-pipeline transcrever-ptbr video-tools social-toolbox; do
+  git clone "https://github.com/SafeMantella/${r}.git" "_repos/${r}"
+done
+ln -s _repos/token-kit/prep-frames prep-frames
+ln -s _repos/token-kit/prep-texto prep-texto
+ln -s _repos/token-kit/token-saver token-saver
+ln -s _repos/video-cut-pipeline/corte-silencio corte-silencio
+ln -s _repos/video-cut-pipeline/evals evals
+ln -s _repos/video-cut-pipeline/evals-edicao evals-edicao
+ln -s _repos/transcrever-ptbr transcrever
+ln -s _repos/video-tools/video-camadas video-camadas
+ln -s _repos/video-tools/slides-pdf slides-pdf
+ln -s _repos/social-toolbox/keyword-mining keyword-mining
+ln -s _repos/social-toolbox/minerar-hooks minerar-hooks
+ln -s _repos/social-toolbox/pdf-to-markdown pdf-to-markdown
+ln -s _repos/social-toolbox/grokbot grokbot
+ln -s _repos/social-toolbox/links links
+ln -s _repos/social-toolbox/extrair-audio extrair-audio
+ln -s _repos/social-toolbox/grok-imagem grok-imagem
+```
+
+Recreate the `transcrever` and `video-camadas` virtualenvs, and `grokbot/.env` from `.env.example`. Do not commit virtualenvs, `.env`, cookies, or browser profiles.
+
+Other clones stay directly under `ferramentas/`:
 
 ```bash
 cd ferramentas
 git clone https://github.com/mvanhorn/last30days-skill.git
 git clone https://github.com/SafeMantella/Pytho-inator.git
 chmod +x Pytho-inator/pytho-inator
+git clone https://github.com/SafeMantella/Fontastic-Text-Image-Generator.git fontastic-text-image-generator
+git clone https://github.com/SafeMantella/Adobe-Podcast-for-Claude-Code.git adobe-podcast
+git clone https://github.com/dreammis/social-auto-upload.git
+git clone https://github.com/fogleman/ln.git
 ```
 
 Pytho-inator maps a repeated task to one local Python CLI. After onboarding, the agent suggests that CLI at the end of a task. Nothing is built until you say yes.

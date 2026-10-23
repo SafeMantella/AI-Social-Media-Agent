@@ -1,0 +1,57 @@
+#!/usr/bin/env python3
+"""Atualiza (git pull --ff-only) os repos clonados em ferramentas/. Uso: atualizar-ferramentas [nome] | --self-check
+Uma linha por ferramenta; a última linha é o resumo. Árvore suja = bloqueada, nada é instalado."""
+import subprocess, sys, tempfile
+from pathlib import Path
+
+MANIFESTOS = {"requirements.txt", "pyproject.toml", "package.json", "Pipfile"}
+
+def git(d, *a):
+    r = subprocess.run(["git", "-C", str(d), *a], capture_output=True, text=True)
+    return r.returncode, r.stdout.strip()
+
+def atualizar(d):
+    if git(d, "fetch", "--quiet")[0]: return "erro", "fetch falhou (sem remote ou sem conexão)"
+    remote = (git(d, "remote")[1].split() or [""])[0]
+    ref = f"{remote}/{git(d, 'rev-parse', '--abbrev-ref', 'HEAD')[1]}"
+    if git(d, "rev-parse", "--verify", "--quiet", ref)[0]:  # sem branch igual no remote: usa a default dele
+        rc, ref = git(d, "symbolic-ref", "--short", f"refs/remotes/{remote}/HEAD")
+        if rc: return "erro", "sem branch remota"
+    atras = int(git(d, "rev-list", "--count", f"HEAD..{ref}")[1] or 0)
+    if not atras: return "ok", "já estava atualizada"
+    sujo = git(d, "status", "--porcelain")[1]
+    if sujo: return "bloqueada", "mudanças locais: " + ", ".join(l[3:] for l in sujo.splitlines())
+    if git(d, "pull", "--ff-only", remote, ref[len(remote) + 1:])[0]: return "erro", "pull --ff-only falhou"
+    log = git(d, "log", "--oneline", "-3", "ORIG_HEAD..HEAD")[1].replace("\n", " | ")  # ponytail: só os 3 últimos, a linha precisa caber no contexto
+    msg = f"atualizada ({atras} commits, últimos: {log})"
+    if MANIFESTOS & {Path(f).name for f in git(d, "diff", "--name-only", "ORIG_HEAD", "HEAD")[1].splitlines()}:
+        msg += " — dependência mudou, reinstalar"
+    return "atualizada", msg
+
+def main(nome=None):
+    raiz = Path(__file__).resolve().parents[1]
+    # symlinks de ferramenta apontam pra dentro de _repos/: iterar _repos/ e pular os symlinks evita duplicata
+    alvos = [raiz / nome] if nome else sorted(p for p in [*raiz.iterdir(), *(raiz / "_repos").glob("*")] if p.is_dir() and not p.is_symlink())
+    alvos = [p for p in alvos if (p / ".git").exists()]
+    if nome and not alvos: sys.exit(f"erro: {nome} não existe ou não é repo git")
+    cont = {}
+    for p in alvos:
+        st, msg = atualizar(p)
+        cont[st] = cont.get(st, 0) + 1
+        print(f"{p.name}: {msg}")
+    print("resumo: " + (", ".join(f"{n} {s}" for s, n in cont.items()) or "nenhuma ferramenta git em ferramentas/"))
+
+def self_check():  # cria origem + clone em tmp, empurra 1 commit e confere o pull
+    with tempfile.TemporaryDirectory() as t:
+        t = Path(t); sh = lambda *a, c=None: subprocess.run(a, cwd=c, check=True, capture_output=True)
+        sh("git", "init", "-q", "-b", "main", str(t / "o")); sh("git", "-C", str(t / "o"), "-c", "user.name=t", "-c", "user.email=t@t", "commit", "-q", "--allow-empty", "-m", "a")
+        sh("git", "clone", "-q", str(t / "o"), str(t / "c"))
+        assert atualizar(t / "c") == ("ok", "já estava atualizada")
+        sh("git", "-C", str(t / "o"), "-c", "user.name=t", "-c", "user.email=t@t", "commit", "-q", "--allow-empty", "-m", "b")
+        (t / "c" / "x").write_text("x"); assert atualizar(t / "c")[0] == "bloqueada"  # status --porcelain conta arquivo novo
+        (t / "c" / "x").unlink(); assert atualizar(t / "c")[0] == "atualizada"
+    print("self-check ok")
+
+if __name__ == "__main__":
+    a = sys.argv[1:]
+    self_check() if a[:1] == ["--self-check"] else main(*a[:1])

@@ -24,6 +24,30 @@ node_modules/
 ferramentas/last30days-skill/
 ferramentas/fontastic-text-image-generator/
 ferramentas/Pytho-inator/
+ferramentas/adobe-podcast/
+ferramentas/social-auto-upload/
+ferramentas/ln/
+
+# Owned tools live in public SafeMantella repos. See memory/ferramentas-repos.md.
+# The tool paths are symlinks into ferramentas/_repos/. This repo does not track their code.
+ferramentas/_repos/
+ferramentas/_old/
+ferramentas/prep-frames
+ferramentas/prep-texto
+ferramentas/token-saver
+ferramentas/corte-silencio
+ferramentas/evals
+ferramentas/evals-edicao
+ferramentas/transcrever
+ferramentas/video-camadas
+ferramentas/slides-pdf
+ferramentas/keyword-mining
+ferramentas/minerar-hooks
+ferramentas/pdf-to-markdown
+ferramentas/grokbot
+ferramentas/links
+ferramentas/extrair-audio
+ferramentas/grok-imagem
 
 # Tool output and session files
 ferramentas/instagram-transcript/downloads/
@@ -35,6 +59,9 @@ ferramentas/instagram-transcript/batch_salvos_ia.nohup
 ferramentas/pdf-to-markdown/output/
 ferramentas/minet/cookies.txt
 ferramentas/reddit-answers/.profile/
+ferramentas/adobe-enhance/.profile/
+ferramentas/sau-yt/.profile/
+ferramentas/grokbot/.env
 *.log
 
 # Reference libraries
