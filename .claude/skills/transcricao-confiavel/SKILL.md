@@ -5,7 +5,7 @@ description: Transcribe local video or audio without silently dropping speech. C
 
 # Reliable transcription
 
-Use this instead of `helpers/transcribe.py` from the `local-video-use` skill for any recording in this project. Why, the measurements, and what already failed: **`memory/diretrizes-transcricao.md`**. Read that before changing a parameter here.
+Use this instead of `helpers/transcribe.py` from the `local-video-use` skill for any recording in this project. Why, the measurements, and what already failed: **`memory/diretrizes-transcricao.md`**. Read that before changing a parameter here. Read `memory/ambiente-maquina.md` before running a script. It says which Python and virtualenv this machine has.
 
 This skill is the local whisper path. It applies when `transcription` in `memory/config.md` is `whisper`. If it is not, use the configured provider. Never write a secret into the repo.
 

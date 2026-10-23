@@ -13,3 +13,4 @@ grok_image:
 dm_automation:
 behind_the_scenes:
 face:
+writes_scripts:

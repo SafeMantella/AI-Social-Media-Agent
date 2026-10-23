@@ -101,6 +101,49 @@ def main() -> int:
             print("FAIL: portuguese check")
             return 1
 
+        scraped = base / "scraped"
+        write(scraped / "memory" / "config.md", "content_language: Português\n")
+        write(
+            scraped / "referencia" / "pesquisas" / "slug" / "page.md",
+            "see https://example.com/content/post and also content/ideas in the scrape\n",
+        )
+        write(
+            scraped / "referencia" / "pesquisas" / "slug" / "RESUMO.md",
+            "source https://example.com/content/ideas/x\n",
+        )
+        write(scraped / "note.md", "only a url https://example.com/content/ideas/x\n")
+        scraped_check = run(["check", "--root", str(scraped), "--language", "Português"])
+        if scraped_check.returncode != 0:
+            print(scraped_check.stdout)
+            print("FAIL: scraped research or a URL was flagged")
+            return 1
+        write(scraped / "bad.md", "still `content/ideas`\n")
+        bad_check = run(["check", "--root", str(scraped), "--language", "Português"])
+        if bad_check.returncode == 0:
+            print("FAIL: a real stale path inside a system note was accepted")
+            return 1
+
+        urls = base / "urls"
+        write(urls / "memory" / "config.md", "content_language: English\n")
+        write(
+            urls / "note.md",
+            "see https://example.com/conteudo/ideias/x and also conteudo/ideias/a.md\n",
+        )
+        url_apply = run(["apply", "--root", str(urls), "--language", "English"])
+        if url_apply.returncode != 0:
+            print(url_apply.stderr)
+            print("FAIL: url apply")
+            return 1
+        url_body = (urls / "note.md").read_text(encoding="utf-8")
+        if "https://example.com/conteudo/ideias/x" not in url_body:
+            print("FAIL: a URL was rewritten")
+            print(url_body)
+            return 1
+        if "content/ideas/a.md" not in url_body:
+            print("FAIL: a real path beside a URL was not rewritten")
+            print(url_body)
+            return 1
+
     print("ok")
     return 0
 

@@ -12,6 +12,8 @@ The creator corrected something already rendered on a video in this folder (`gra
 
 Read `memory/config.md`. When `face` is `no`, do not use the face as a spatial constraint. Captions still go on. Do not add a cutaway whose job is to hide the face.
 
+Before moving text that sits near a cut, detect the cuts on `base.mp4` (`ffmpeg -vf "select='gt(scene,0.08)',showinfo"`). Text that starts just after a cut belongs on the cut frame. Text that leaves is gone on the frame before. The 0.08 threshold came from one copy. Re-measure if it misses or invents cuts. When `face` is `yes`, fixed glitch or VHS bands stay off the face height. Overall wear may cover the frame.
+
 ## Rule: a spatial fix is measured, a style fix is asked
 
 Full criterion: `memory/feedback_ask_dont_assume_creative_fixes.md`. Practical split:

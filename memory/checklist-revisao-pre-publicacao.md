@@ -10,6 +10,8 @@ Source: outside best-practice notes and a creative-team quality rubric, checked 
 4. **Hashtags: 5 to 15 relevant ones** on Instagram (not 30 generic tags). On Shorts, 3 to 5, including `#Shorts`.
 5. **One call to action only** (the comment bait), not "follow plus like plus comment".
 6. **Preview before upload:** watch the final file (resolution, text cut off by the interface, captions) and only then ask the creator to approve. A successful preview is not permission to publish.
+6b. **Paid work:** the native paid-partnership label is on, and the advertising disclosure the country requires is visible before "more". A collab invite does not replace the label. See `memory/parcerias.md`.
+6c. **A Reel reposted as a Short:** upload private, wait for the rights check, then publish. See `memory/youtube-shorts-repost.md`.
 
 ## Carousel
 
@@ -27,5 +29,5 @@ Clarity (can be summarized in up to 5 words), hook (specific curiosity plus a co
 
 ## Research and planning (two small gains)
 
-- **A primary source is required:** at least one primary source (real comments, a thread, a forum the audience uses), and separate fact from opinion, on top of dated sources. This fits `/pesquisar`. It does not replace `last30days`.
+- **A primary source is required:** at least one primary source (real comments, a thread, a forum the audience uses), and separate fact from opinion, on top of dated sources. This fits `/pesquisar`. It does not replace `last30days`. An item is verified only after its own content is opened, including a stretch from the beginning, the middle, and the end. A title, a thumbnail, a duration, or a view count is not proof. What was not opened is marked unverified.
 - **Plan backward:** start from the publish date, list the deliverables, mark the critical path, and have a backup for the riskiest step (recording, approval, render).

@@ -10,6 +10,10 @@ One agent does the whole job. Frame the target, collect with only the tools enab
 
 No single source covers a niche. The value is the cross-check. Do not cite a URL or a number that is not in a file you wrote or a page you opened.
 
+Read `memory/ambiente-maquina.md` before running a collector. Availability of an item enters the note only after the item itself is opened, including a stretch from the beginning, the middle, and the end. A title, a thumbnail, a duration, or a view count is not proof. What could not be opened is "unverified", separate from what was opened. A login wall or an age gate stops that item and goes to the creator. At least one primary source (real comments, a forum the audience uses) is required.
+
+Instagram: hashtag search is the minet call that kept working. Profile, posts, and comments have returned HTML. For a known post, use `instagram-transcript` with comments. Space the calls, at most 2 or 3 profiles, and stop on `401 require_login`. Say that the session expired. See `memory/minet_niche_research_tool.md`.
+
 ## Input
 
 The creator names a target, and may add:

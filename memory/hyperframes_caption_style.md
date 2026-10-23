@@ -1,5 +1,7 @@
 # Caption style (HyperFrames)
 
+The face named in this note is the face these measures were taken on. Use the face in `memory/visual_identity_standard.md`. Re-measure line width when the face changes. Keep the layout, the sizes as a starting point, and the method. An alpha-track contract measured on one copy is `ferramentas/faixa-legenda/README.md`.
+
 Copy this into a new HyperFrames caption project instead of rediscovering size, position, and animation. Reference canvas: **1920×3414** (portrait, a 9:16 frame scaled from 1080×1920). If the next piece uses another canvas, scale the pixel values. Do not paste the fixed numbers onto a different frame.
 
 `face` in `memory/config.md` controls the face rules. When `face` is `no`, skip every check whose only job is to keep captions off a face. Safe zones, cue length, and the no-fade cut still apply.

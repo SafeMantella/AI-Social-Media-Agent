@@ -11,7 +11,7 @@ Every carousel follows these five steps, in this order.
 4. Wait for the creator to approve the plan.
 5. Build.
    - `carousel: canva` — duplicate the master template id in `estrategia/marca/ids.md`. Replace text and elements. Never generate the design with an image model. A new slide is a duplicate of a slide that already has the right font. Do not create an empty slide and a new text box. Record the design link on the canonical page or file.
-   - `carousel: md` — the plan file is the piece. Do not open Canva.
+   - `carousel: md` — the plan file is the piece. Do not open Canva. When the same Pillow assembly has been copied across two pieces, promote it to `ferramentas/` under the repeated-script rule in `memory/regras-projeto.md`. The contract, measured on one copy: slides are 1080×1350, the chosen image is downloaded once at full size, the top and the bottom of the image are darkened where type sits, and the brand plate comes from `memory/visual_identity_standard.md`. Do not bake a font name or a palette into the script.
 
 The caption is 1 to 3 sentences. The carousel already carries the content. Write the short version first. Voice rules in `memory/estilo-de-escrita/guia-voz.md` apply. Length rules of a long post do not.
 

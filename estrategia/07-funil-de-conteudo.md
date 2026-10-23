@@ -25,7 +25,7 @@ Do this once, with the creator, after onboarding, and write the result into `est
 | Across | Keep a relationship at any stage | Community, culture, a real behind-the-scenes moment |
 | Bottom | Name the offer, the service, or the paid next step | One commercial pillar, capped |
 
-The functional layer (authority, connection, proof) in `memory/growth_sales_critical_lens.md` cuts across these stages. A middle piece can still be proof. A top piece can still be authority. Do not collapse the two layers into one list.
+The functional layer cuts across these stages. Each week still covers authority (a framework or a lesson), connection (values or a story), and trust (a result or proof). Direct self-promotion stays at or below about 20%. That cap came from one copy. Re-check it before treating it as a law. A middle piece can still be proof. A top piece can still be authority. Do not collapse the two layers into one list. Paid work follows `memory/parcerias.md`.
 
 **Classify an idea before writing:**
 

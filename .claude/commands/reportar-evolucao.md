@@ -29,6 +29,8 @@ If the clone fails, stop and say so. Do not invent a diff. Delete `/tmp/ai-socia
 
 Compare the worktree on disk with that snapshot. A zip download and a git clone use the same comparison. Do not use `git diff` against `origin` as the source. Their commits mix brand files with system files.
 
+Before a difference counts as a system change, map both sides through the rows in `onboarding/language_paths.py`. A renamed folder and translated prose are not a change. Compare a file with the file at its mapped path. A hunk that is only a translation is not upstream and not bring-in.
+
 ## Paths
 
 Compare these when they exist on either side:
@@ -36,11 +38,11 @@ Compare these when they exist on either side:
 - `AGENTS.md`, `CLAUDE.md`, `README.md`, `README.pt-BR.md`, `.gitignore`
 - `.claude/`
 - `onboarding/`
-- `ferramentas/`, except `venv`, `.venv`, `__pycache__`, `node_modules`, `downloads`, `transcripts`, `output`, `*.log`, cookie files, session files, and the clones `Pytho-inator`, `last30days-skill`, and `fontastic-text-image-generator`
+- `ferramentas/`, except `venv`, `.venv`, `__pycache__`, `node_modules`, `downloads`, `transcripts`, `output`, `*.log`, cookie files, session files, `ferramentas/_repos/`, `ferramentas/_old/`, and the clones `Pytho-inator`, `last30days-skill`, and `fontastic-text-image-generator`
 - template notes in `memory/` that are pipelines, feedback, or tool notes
 - method guides `estrategia/03-templates-sops-calendario.md` through `estrategia/10-copywriting.md`
 
-Do not read these into the report: `memory/config.md`, `memory/visual_identity_standard.md`, `memory/social_media_handles.md`, `memory/estilo-de-escrita/`, `memory/dm-automation.md`, `memory/edicao-observada.md`, `estrategia/00-identidade-visual.md`, `estrategia/01-posicionamento-e-pilares.md`, `estrategia/02-arquitetura-notion.md`, `estrategia/marca/`, `conteudo/`, `referencia/`, `freebies/` other than its README, `gravações/`, `books/`, `site/`, `.git/`, `.env`, and any file whose name contains `cookie`, `token`, `secret`, or `credential`.
+Do not read these into the report: `memory/config.md`, `memory/visual_identity_standard.md`, `memory/social_media_handles.md`, `memory/estilo-de-escrita/`, `memory/dm-automation.md`, `memory/edicao-observada.md`, `memory/ambiente-maquina.md`, `estrategia/00-identidade-visual.md`, `estrategia/01-posicionamento-e-pilares.md`, `estrategia/02-arquitetura-notion.md`, `estrategia/marca/`, `conteudo/`, `referencia/`, `freebies/` other than its README, `gravações/`, `books/`, `site/`, `.git/`, `.env`, and any file whose name contains `cookie`, `token`, `secret`, or `credential`.
 
 A file that is only on the client under `.claude/`, `onboarding/`, or `ferramentas/` is a candidate when it is a system rule or a local tool. Leave it out when it is content, a brand asset, or a secret.
 

@@ -9,6 +9,7 @@ The script does not translate prose. It does not set files_language.
 from __future__ import annotations
 
 import argparse
+import re
 import sys
 from pathlib import Path
 
@@ -48,6 +49,8 @@ SKIP_DIRS = {
     "_old",
 }
 SKIP_FILES = {"language_paths.py", "test_language_paths.py"}
+URL_RE = re.compile(r"https?://\S+")
+RESEARCH_ROOTS = ("referencia/pesquisas/", "reference/research/")
 TEXT_SUFFIXES = {
     ".md", ".py", ".sh", ".json", ".txt", ".toml", ".yml", ".yaml",
     ".html", ".css", ".js", ".ts", ".csv",
@@ -101,7 +104,36 @@ def iter_text_files(root: Path):
             yield path
 
 
+def is_research_raw(rel: str) -> bool:
+    """Scraped research markdown is not a system file. RESUMO.md still is."""
+    rel = rel.replace("\\", "/")
+    if Path(rel).name == "RESUMO.md":
+        return False
+    return rel.startswith(RESEARCH_ROOTS)
+
+
+def strip_urls_for_check(text: str) -> str:
+    return URL_RE.sub(" ", text)
+
+
+def shield_urls(text: str) -> tuple[str, list[str]]:
+    urls: list[str] = []
+
+    def hold(match: re.Match[str]) -> str:
+        urls.append(match.group(0))
+        return f"\x00URL{len(urls) - 1}\x00"
+
+    return URL_RE.sub(hold, text), urls
+
+
+def restore_urls(text: str, urls: list[str]) -> str:
+    for index, url in enumerate(urls):
+        text = text.replace(f"\x00URL{index}\x00", url)
+    return text
+
+
 def replace_paths(text: str, language: str) -> str:
+    shielded, urls = shield_urls(text)
     for name in stale_names(language):
         target = ""
         for row in ROWS:
@@ -110,11 +142,11 @@ def replace_paths(text: str, language: str) -> str:
                 break
         if not target or target == name:
             continue
-        text = text.replace(f"`{name}`", f"`{target}`")
-        text = text.replace(f"{name}/", f"{target}/")
+        shielded = shielded.replace(f"`{name}`", f"`{target}`")
+        shielded = shielded.replace(f"{name}/", f"{target}/")
         if name.endswith(".md"):
-            text = text.replace(name, target)
-    return text
+            shielded = shielded.replace(name, target)
+    return restore_urls(shielded, urls)
 
 
 def apply_tree(root: Path, language: str) -> None:
@@ -133,6 +165,9 @@ def apply_tree(root: Path, language: str) -> None:
         dest.parent.mkdir(parents=True, exist_ok=True)
         source.rename(dest)
     for path in iter_text_files(root):
+        rel = path.relative_to(root).as_posix()
+        if is_research_raw(rel):
+            continue
         original = path.read_text(encoding="utf-8", errors="ignore")
         updated = replace_paths(original, language)
         if updated != original:
@@ -145,8 +180,10 @@ def check_tree(root: Path, language: str) -> list[str]:
     for path in iter_text_files(root):
         if path.suffix.lower() != ".md" and path.name != ".gitignore":
             continue
-        text = path.read_text(encoding="utf-8", errors="ignore")
         rel = path.relative_to(root).as_posix()
+        if is_research_raw(rel):
+            continue
+        text = strip_urls_for_check(path.read_text(encoding="utf-8", errors="ignore"))
         for name in stale:
             if f"{name}/" in text or f"`{name}`" in text or (name.endswith(".md") and name in text):
                 hits.append(f"{rel}: still points at {name}")

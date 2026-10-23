@@ -2,7 +2,7 @@
 
 Use the local tool **`last30days`** (`ferramentas/last30days-skill/`) to ground case studies (`referencia/estudos-de-caso/`), trend-response scripts, benchmarking of reference profiles, and market facts from the last 30 days.
 
-Whether this collector runs is the `last30days` key in `memory/config.md`. API secrets stay in the environment. A browser session file is kept outside git. Do not commit either.
+Whether this collector runs is the `last30days` key in `memory/config.md`. API secrets stay in the environment. A browser session file is kept outside git. Do not commit either. Read `memory/ambiente-maquina.md` before running the tool.
 
 ## How it works, and which sources it asks
 

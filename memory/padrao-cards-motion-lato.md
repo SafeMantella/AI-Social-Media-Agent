@@ -1,5 +1,7 @@
 # Motion-card layout (1080×1920, Lato 600)
 
+The face in the title is the face these measures were taken on. Use the face in `memory/visual_identity_standard.md`. Re-measure line width when the face changes. Layout, sizes, and method stay. This card is one mold, not the only one. See `memory/direcoes-motion.md`.
+
 Applies to every card overlay above the face. Reference implementation: the piece's `edit/overlays/build.py`.
 
 `face` in `memory/config.md`: when `face` is `yes`, keep the card above the head. In the reference framing the head started near y510–520, so a card that ends near y500 cleared it. Remeasure this take. When `face` is `no`, skip the head clearance. The caption band stays empty either way.

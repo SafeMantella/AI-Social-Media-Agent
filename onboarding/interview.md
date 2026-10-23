@@ -95,7 +95,9 @@ When the profile read exists, questions 5 through 13 are proposals. State what t
 
 24. Recurring behind-the-scenes series: yes or no. The workflow file stays in the repo. `no` leaves `.claude/commands/registrar-bastidores.md` dormant. `yes` does not create the series page during onboarding. Write `behind_the_scenes`.
 
-25. Read back niche, audience, promise, pillars, platforms, handles, storage, carousel, tools, the series choice, whether they already publish, and the keep-or-change decision. Apply corrections. Then follow `.claude/commands/aplicar-idioma.md`. Set `files_language` only when `python3 onboarding/language_paths.py check` prints `ok`. Then set `status: ready`. A failed check does not finish onboarding.
+25. Who writes the script: the creator, or the agent? Creator writes `writes_scripts: yes`. Agent writes `writes_scripts: no`. When it is `yes`, research comes back as checked facts, angles, and sources, with no spoken lines, no script table, no hook, and no caption, until they explicitly ask for a script. See `memory/feedback-so-a-peca-pedida.md`.
+
+26. Read back niche, audience, promise, pillars, platforms, handles, storage, carousel, tools, the series choice, who writes the script, whether they already publish, and the keep-or-change decision. Apply corrections. Then follow `.claude/commands/aplicar-idioma.md`. Set `files_language` only when `python3 onboarding/language_paths.py check` prints `ok`. Then set `status: ready`. A failed check does not finish onboarding.
 
 ## Install checks
 
@@ -108,5 +110,7 @@ When the profile read exists, questions 5 through 13 are proposals. State what t
 - `instagram_research: yes` — session file present and gitignored
 - `grok_image: yes` — authentication present outside the repo
 - `dm_automation: yes` — `memory/dm-automation.md` is complete and the creator confirms PilotDM
+
+When a check runs, fill `memory/ambiente-maquina.md` with what this machine actually has: binaries that exist but are not on `PATH`, the system Python version, which virtualenv runs each tool, and collectors that need Python 3.12 (`uv run --no-project --python 3.12`). After a virtualenv update, reinstall the patchright browser and record the command that worked. Do not invent a path. Do not copy that note into any other file.
 
 A failed install does not get marked ready. Retry, or the creator changes that tool to `no` (or Reddit to `manual`).

@@ -13,7 +13,9 @@ Compare só o sistema: AGENTS.md, CLAUDE.md, README.md, README.pt-BR.md, .gitign
 
 Não leia para o relato: memory/config.md, identidade visual, handles, voz, automação de DM, edição observada, estrategia/00, estrategia/01, estrategia/02, estrategia/marca/, conteudo/, referencia/, freebies/ fora do README, gravações/, books/, site/, .git/, .env, e arquivo com cookie, token, secret ou credential no nome.
 
-Separe duas listas. Upstream: o que esta cópia tem e o template não tem, e que serve para qualquer criador. Trazer: o que o template tem e esta cópia não tem. Se os dois lados mudaram as mesmas linhas, não copie. Mostre os dois e pergunte. Ignore preenchimento de onboarding, valor de config, handle, bio e nome de marca.
+Antes de chamar uma diferença de mudança de sistema, mapeie os dois lados pelas linhas de onboarding/language_paths.py. Pasta renomeada e prosa traduzida não são mudança. Compare o arquivo com o arquivo no caminho mapeado. Um trecho que é só tradução não entra em upstream nem em trazer.
+
+Separe duas listas. Upstream: o que esta cópia tem e o template não tem, e que serve para qualquer criador. Trazer: o que o template tem e esta cópia não tem. Se os dois lados mudaram as mesmas linhas, não copie. Mostre os dois e pergunte. Ignore preenchimento de onboarding, valor de config, handle, bio e nome de marca. Não leia memory/ambiente-maquina.md. Não proponha git pull --allow-unrelated-histories numa cópia que já passou pelo comando de idioma. A atualização dessa cópia é .claude/commands/atualizar-do-git.md.
 
 Escreva memory/relato-evolucao.md e mostre o mesmo texto aqui. Três partes. Upstream: caminho, o que o sistema faz diferente, a regra em palavras gerais, e um diff curto só se cada linha for segura. Trazer: caminhos para copiar e conflitos para eu decidir. Ficar local: uma linha dizendo que marca, conteúdo, pesquisa e credencial ficaram de fora. Não resuma isso.
 

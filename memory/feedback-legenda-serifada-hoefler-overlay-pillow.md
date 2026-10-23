@@ -1,5 +1,7 @@
 # Caption serif and Pillow overlays
 
+The faces named below are the faces these measures were taken on. A brand with another face uses `memory/visual_identity_standard.md`. Do not copy the face name, or a font file path from another machine, into a new piece. Keep the layout, the measures as a starting point, and the method. Re-measure width when the face changes.
+
 ## Current type
 
 - **Motion (title, hook card, pill, cutaway, overlay):** **Lato SemiBold 600**. Italic is Lato SemiBold Italic. The Google Fonts cut of Lato has no 600 (only 400, 700, and 900). SemiBold comes from the Lato 3 source: `Lato-Semibold.ttf` and `Lato-SemiboldItalic.ttf`. Put them in the piece's `edit/overlays/fonts/`. Inter 500 is support only (tag, label, chip). JetBrains Mono 500 is only for a number, an address, or a short monospace string. Sora stays off motion.

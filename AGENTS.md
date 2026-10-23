@@ -10,7 +10,7 @@ Stop and follow `onboarding/interview.md` when any of these is true:
 
 - `memory/config.md` is missing
 - `status` is not `ready`
-- a required key is missing, empty, or not an allowed value
+- a required key is missing, empty, or not an allowed value. `writes_scripts` is not one of those keys when `status` is already `ready`
 - any brand file below still contains `FILL VIA ONBOARDING`
 - `dm_automation` is `yes` and `memory/dm-automation.md` does not contain a trigger word and both messages
 - `existing_content` is `yes` and `referencia/perfil-atual/RESUMO.md` is missing
@@ -38,6 +38,7 @@ Allowed values:
 - `content_language`: the language name the creator gave. This is the language of the system and of published content
 - `files_language`: the same language name, written only after `onboarding/language_paths.py check` prints `ok`
 - `brand_name`: non-empty
+- `writes_scripts`: `yes` or `no`. Empty does not reopen onboarding when `status` is already `ready`. Ask once before the next script, and write the key. A new onboarding asks it before the readback.
 
 Brand files that must be filled:
 

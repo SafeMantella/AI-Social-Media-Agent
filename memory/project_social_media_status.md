@@ -4,7 +4,8 @@ Read this after onboarding. Numbers, handles, and the niche are not in this file
 
 ## Where things live
 
-- `memory/config.md` — language, storage, carousel, tools, face, status.
+- `memory/config.md` — language, storage, carousel, tools, face, who writes the script, status.
+- `memory/ambiente-maquina.md` — binaries, Python, and virtualenvs on this machine. Local. Do not copy it upstream.
 - `estrategia/01-posicionamento-e-pilares.md` — niche, audience, promise, goal, pillars.
 - `estrategia/00-identidade-visual.md` and `memory/visual_identity_standard.md` — palette, type, face.
 - `memory/social_media_handles.md` — platforms, handles, bios.

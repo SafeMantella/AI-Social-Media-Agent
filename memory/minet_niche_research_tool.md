@@ -6,7 +6,9 @@ Run it only when `instagram_research` is enabled in `memory/config.md`. The sign
 
 ## What actually works
 
-Checked with a signed-in session file:
+A later copy, checked in 2026-10, saw only hashtag search return posts. Profile, posts, and comments returned HTML. Until that is retested, do not treat `user-posts` as reliable. For a known post, use `ferramentas/instagram-transcript/` with comments. Space the calls. At most 2 or 3 profiles. Stop on `401 require_login` and say the session expired.
+
+An earlier check, with a signed-in session file, saw more:
 
 - **Instagram works.** `hashtag` and `user-posts` returned real data (caption, likes, comments, media, timestamp). `user-followers`, `user-following`, and `comments` should work on the same path. `user-infos` came back empty once; that was probably the rate limit.
 - **TikTok `search-videos` is broken.** TikTok returns `200` with an empty body (`TiktokPublicAPIInvalidResponseError`). Search requires a device signature this client does not compute. It is not the session file. It is TikTok's bot wall. minet 4.2.1 does not fix it. TikTok in minet is only `search-videos` (no `hashtag` or `user-posts`).

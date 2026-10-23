@@ -23,6 +23,13 @@ Read the file when the task touches it. `AGENTS.md` stays short on purpose.
 - `memory/diretrizes-transcricao.md` — which engine, and how to check it
 - `memory/content-format-cascade.md` — short video is the base format
 - `memory/checklist-revisao-pre-publicacao.md` — pre-publish check
+- `memory/feedback-so-a-peca-pedida.md` — only the named piece; who writes the script
+- `memory/formato-lista.md` — list order, repeats, official images
+- `memory/formatos-de-peca.md` — showcase, two scenes, series, no end card
+- `memory/direcoes-motion.md` — motion molds, not only the card
+- `memory/parcerias.md` — paid label, media kit, first agency message
+- `memory/youtube-shorts-repost.md` — Reel reposted as a Short
+- `memory/ambiente-maquina.md` — this machine's binaries and virtualenvs
 - `memory/feedback-evolve-feedback-loop.md` — save reusable corrections
 - `memory/feedback_hook_writing_no_jargon.md` — hooks
 - `memory/feedback-cta-palavra-comentario-caps-sem-acento.md` — comment-word CTA
@@ -67,6 +74,10 @@ Read the file when the task touches it. `AGENTS.md` stays short on purpose.
 - `memory/tiktok_scraping_evaluated.md`
 - `memory/substack_best_practices.md`
 - `memory/token-saver-prep-local.md`
+- `ferramentas/buscar-imagens/README.md` — wide image search and timed video sheets
+- `ferramentas/montar-lista/README.md` — headline, cards, series, end card
+- `ferramentas/looks-take/README.md` — take looks and transition sound
+- `ferramentas/faixa-legenda/README.md` — caption alpha track
 
 ## Strategy
 

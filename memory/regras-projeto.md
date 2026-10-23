@@ -24,7 +24,13 @@ See `.claude/skills/ferramentas-locais/SKILL.md` for connection status and for t
 
 `.claude/skills/` and `.claude/commands/` are the **single source** of extensions for this project. Any terminal agent reads and runs them from here. Do not duplicate the files.
 
-Switches for the optional collectors live in `memory/config.md`: `last30days`, `reddit` (`no`, `manual`, or `auto`), `instagram_research`, `grok_image`, `dm_automation`, and `transcription` (`whisper` or `elevenlabs`). API secrets stay in the environment. A browser session file is kept outside git.
+Switches for the optional collectors live in `memory/config.md`: `last30days`, `reddit` (`no`, `manual`, or `auto`), `instagram_research`, `grok_image`, `dm_automation`, and `transcription` (`whisper` or `elevenlabs`). `writes_scripts` says whether the creator writes the script. API secrets stay in the environment. A browser session file is kept outside git.
+
+Read `memory/ambiente-maquina.md` before running a local script. It records this machine's binaries, Python, and virtualenvs.
+
+When the same script has been copied into two or more pieces, promote it. Move the mechanism to `ferramentas/<name>/` with a README. Move the format to `memory/`. Strip type, palette, names, and paths that belong to one machine. Point type at `memory/visual_identity_standard.md`. Do not leave the second copy inside the piece folder.
+
+Deliver only the piece the creator named. Another account's post is a form reference, not a subject. See `memory/feedback-so-a-peca-pedida.md`.
 
 ## 5. One agent does the work
 
@@ -36,7 +42,7 @@ The weekly storage review is `.claude/commands/revisar-armazenamento.md`. The da
 
 ## 7. Git update
 
-Once a week this folder pulls `main` from `https://github.com/SafeMantella/AI-Social-Media-Agent.git` and adapts the system files. The procedure is `.claude/commands/atualizar-do-git.md`. The date lives in `memory/atualizacao-git.md`. A due update is a warning and a question. A filled brand file stays as this copy wrote it. Nothing is pushed.
+Once a week this folder pulls `main` from `https://github.com/SafeMantella/AI-Social-Media-Agent.git` and adapts the system files. A copy that already ran the language command does not use `--allow-unrelated-histories`. The procedure is `.claude/commands/atualizar-do-git.md`. The date lives in `memory/atualizacao-git.md`. A due update is a warning and a question. A filled brand file stays as this copy wrote it. Nothing is pushed.
 
 ## 8. Evolution
 

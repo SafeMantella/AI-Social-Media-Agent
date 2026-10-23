@@ -27,4 +27,8 @@ A tool set to `no` is skipped. The gap is written in the summary. Do not pretend
 
 `referencia/pesquisas/<slug>/RESUMO.md` with: pains and questions, what people are saying, top content, verified links, open angles, and the gaps. Read the raw files before citing a number. Do not trust a digest you have not opened.
 
+Availability or existence of an item enters the note only after the item itself has been opened, including a stretch from the beginning, the middle, and the end. A title, a thumbnail, a duration, or a view count does not prove the item. What could not be opened is listed as unverified, separate from what was opened. A block (a login wall, an age gate) stops that item and goes to the creator.
+
+At least one primary source (real comments, a forum the audience uses) is required before the note is done. See `memory/checklist-revisao-pre-publicacao.md`.
+
 TikTok has no free discovery path from this machine. Say so when the target is mostly TikTok. See `memory/tiktok_scraping_evaluated.md`.

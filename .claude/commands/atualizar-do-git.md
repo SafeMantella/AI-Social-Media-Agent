@@ -18,6 +18,20 @@ If `upstream` is missing and `origin` is not the template, add `upstream` with t
 
 Use `upstream` when it exists. Use `origin` when that remote is the template. Fetch that remote. If the fetch fails, stop and say so. Do not invent an update.
 
+## A copy that already ran the language command
+
+Read `files_language` in `memory/config.md` and the rows in `onboarding/language_paths.py`. When the creator-facing folders are no longer the template's names, do not pull with `--allow-unrelated-histories`. That pull conflicts add/add on almost every system file and plants a second tree beside the translated one.
+
+Do this instead:
+
+1. Find the template commit this copy started from. It is the newest template commit whose system files match this copy once translated prose and the path renames are ignored. Same code, translated words.
+2. Apply only the template's delta since that commit.
+3. Write that delta onto the local paths, in `content_language`. Map each path through the rows in `onboarding/language_paths.py`. Do not create the template's folder names beside the translated ones.
+4. When a conflict is a file the template did not change since that base commit, keep the local side.
+5. If a bad pull already created a duplicate tree, remove only the duplicate template folders. Do not remove a folder that holds a local fill. If you cannot tell which tree is the duplicate, stop and ask.
+
+A copy that still uses the template's folder names uses the pull below.
+
 ## Pull
 
 When tracked files have uncommitted edits, commit them with `git add -u` before the pull. That commit records the current tree. It does not add untracked files.
@@ -40,6 +54,7 @@ These stay as this copy filled them. An empty `FILL VIA ONBOARDING` in the templ
 - `memory/estilo-de-escrita/`
 - `memory/dm-automation.md`
 - `memory/edicao-observada.md`
+- `memory/ambiente-maquina.md`
 - `estrategia/00-identidade-visual.md`
 - `estrategia/01-posicionamento-e-pilares.md`
 - `estrategia/02-arquitetura-notion.md`
