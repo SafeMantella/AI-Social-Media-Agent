@@ -4,9 +4,9 @@ When building motion overlays for a piece (title, captions, a list stepper, a fi
 
 A green-screen `test_composite` hides scale, contrast, and collisions. Those show up only against the real background, and a full render is the expensive moment to discover them. One composited frame is the cheap checkpoint.
 
-Stay inside the current visual system while adjusting. Do not invent a second palette or type pair. Motion type is Lato 600. Captions are the serif spec. Card color and type are `memory/padrao-cards-motion-lato.md`. Change size and the amount of detail, not the system.
+Stay inside the current visual system while adjusting. Do not invent a second palette or type pair. Motion type is the motion face, semibold. Captions use the caption face spec. Card color and type are `memory/padrao-cards-motion.md`. Change size and the amount of detail, not the system.
 
-`face` in `memory/config.md`: when `face` is `yes`, also check that the overlay does not cover the face, except a list layout that is explicitly allowed to (`memory/feedback-legenda-serifada-hoefler-overlay-pillow.md`). Keep type near the reading area, not scattered on the edges. When `face` is `no`, skip the face check. Safe zones still apply.
+`face` in `memory/config.md`: when `face` is `yes`, also check that the overlay does not cover the face, except a list layout that is explicitly allowed to (`memory/feedback-legenda-overlay-pillow.md`). Keep type near the reading area, not scattered on the edges. When `face` is `no`, skip the face check. Safe zones still apply.
 
 ## Safe zones
 

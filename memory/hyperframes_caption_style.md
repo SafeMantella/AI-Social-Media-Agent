@@ -6,7 +6,7 @@ Copy this into a new HyperFrames caption project instead of rediscovering size, 
 
 `face` in `memory/config.md` controls the face rules. When `face` is `no`, skip every check whose only job is to keep captions off a face. Safe zones, cue length, and the no-fade cut still apply.
 
-Why each choice was made is in `memory/feedback_animation_composite_preview.md`. The Pillow path, when ffmpeg has no `drawtext`, is in `memory/feedback-legenda-serifada-hoefler-overlay-pillow.md`.
+Why each choice was made is in `memory/feedback_animation_composite_preview.md`. The Pillow path, when ffmpeg has no `drawtext`, is in `memory/feedback-legenda-overlay-pillow.md`.
 
 ## When `face` is `yes`: never cover the face
 
@@ -58,7 +58,7 @@ When captions are fixed at the bottom, put the CTA and badges above the head. Th
 
 ## CSS
 
-Paste inside the caption composition's `<style>`. Hoefler Text, off-white, **no background**. A light shadow so it reads on a face or a hand.
+Paste inside the caption composition's `<style>`. The caption face, off-white, **no background**. A light shadow so it reads on a face or a hand.
 
 ```css
 .clip {
@@ -76,7 +76,7 @@ Paste inside the caption composition's `<style>`. Hoefler Text, off-white, **no 
   display: inline-block;
   max-width: 1680px;    /* ~87.5% of the width, inside the side margin */
   color: #f7f5f0;
-  font-family: "Hoefler Text", serif;  /* memory/feedback-legenda-serifada-hoefler-overlay-pillow.md */
+  font-family: "CAPTION FACE", serif;  /* the caption face from memory/visual_identity_standard.md; see memory/feedback-legenda-overlay-pillow.md */
   font-size: 60px;
   line-height: 1.3;
   text-align: center;
@@ -164,7 +164,7 @@ Quote `"0:a?"`. After a background render, **do not trust `ffprobe` duration alo
 
 The spec does not scale onto a native **1080×1920** frame by proportion. Two things break.
 
-**1. Size.** 60px at 1920 becomes 34px at 1080 by cross-multiplying. That is illegible when the face fills about half the frame and a screen image sits behind it. The reference size was validated on a small face. On this class of take, a boxed sans trial needed about **58px** and `top: 1650`. Recalibrate the serif on a real composite. Do not treat 58px as the Hoefler size.
+**1. Size.** 60px at 1920 becomes 34px at 1080 by cross-multiplying. That is illegible when the face fills about half the frame and a screen image sits behind it. The reference size was validated on a small face. On this class of take, a boxed sans trial needed about **58px** and `top: 1650`. Recalibrate the serif on a real composite. Do not treat 58px as the size of your caption face.
 
 **Calibrate size on a real composite of this take, not by scaling the canvas.** Always render a comparison of 2–3 sizes on a real frame before the full render.
 

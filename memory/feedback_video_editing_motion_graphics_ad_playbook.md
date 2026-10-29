@@ -93,7 +93,7 @@ Mix starting points. The original instruction is to trust the ear. These are not
 - Audit every generated file. About a third come out nearly silent. Regenerate those before use.
 - A music prompt that names an artist is rejected by hosted music APIs. Describe the texture. Do that on the local tools too.
 
-For clicks under motion cards, the card note is stricter: clicks, not pops (`memory/padrao-cards-motion-lato.md`).
+For clicks under motion cards, the card note is stricter: clicks, not pops (`memory/padrao-cards-motion.md`).
 
 ## 7. Contact sheet and hook variants
 

@@ -7,6 +7,7 @@ Read the file when the task touches it. `AGENTS.md` stays short on purpose.
 - `memory/config.md` — status and choices
 - `memory/visual_identity_standard.md` — palette and type
 - `memory/social_media_handles.md` — handles and bios
+- `memory/ferramentas-existentes.md` — tools the creator already uses and how each one connects
 - `memory/estilo-de-escrita/guia-voz.md` — voice rules
 - `memory/estilo-de-escrita/exemplos.md` — samples
 - `memory/project_social_media_status.md` — map of the repo
@@ -24,8 +25,12 @@ Read the file when the task touches it. `AGENTS.md` stays short on purpose.
 - `memory/content-format-cascade.md` — short video is the base format
 - `memory/checklist-revisao-pre-publicacao.md` — pre-publish check
 - `memory/feedback-so-a-peca-pedida.md` — only the named piece; who writes the script
+- `memory/checagem-de-afirmacoes.md` — table of factual claims with verdict, source, and safer wording; run before approval and on the final text
 - `memory/formato-lista.md` — list order, repeats, official images
 - `memory/formatos-de-peca.md` — showcase, two scenes, series, no end card
+- `memory/antigravity_cli_parity.md` — optional: running this folder in the Antigravity CLI too
+- `memory/padrao-sfx-video.md` — sound design defaults, CC0 samples, levels
+- `memory/busca-imagens-proativa.md` — search images and screenshots without waiting to be asked
 - `memory/direcoes-motion.md` — motion molds, not only the card
 - `memory/parcerias.md` — paid label, media kit, first agency message
 - `memory/youtube-shorts-repost.md` — Reel reposted as a Short
@@ -35,8 +40,10 @@ Read the file when the task touches it. `AGENTS.md` stays short on purpose.
 - `memory/feedback-cta-palavra-comentario-caps-sem-acento.md` — comment-word CTA
 - `memory/feedback_ask_dont_assume_creative_fixes.md` — ask on ambiguous creative fixes
 - `memory/regras-projeto.md` — posture, storage, tools
+- `memory/regras-execucao-robusta.md` — read the whole task first, no skipped steps, evidence before "done", browser policy, token savings
+- `memory/pendencias.md` — what is open; read by `/iniciar`
 - `memory/revisao-armazenamento.md` — weekly disk review; the procedure is `.claude/commands/revisar-armazenamento.md`
-- `memory/atualizacao-git.md` — weekly pull from the template; the procedure is `.claude/commands/atualizar-do-git.md`
+- `memory/toolkit-updates.md` — last check date of the template and of every tool repository; the procedure is `.claude/commands/update-toolkit.md`
 - `memory/evolucao-template.md` — monthly sanitized report to the template; the procedure is `.claude/commands/reportar-evolucao.md`
 
 ## Video detail
@@ -51,14 +58,14 @@ Read the file when the task touches it. `AGENTS.md` stays short on purpose.
 - `memory/feedback-video-lowest-fps.md`
 - `memory/feedback-video-speed-versions.md`
 - `memory/feedback-generated-video-in-project.md`
-- `memory/feedback-legenda-serifada-hoefler-overlay-pillow.md`
+- `memory/feedback-legenda-overlay-pillow.md`
 - `memory/hyperframes_caption_style.md`
-- `memory/padrao-cards-motion-lato.md`
+- `memory/padrao-cards-motion.md`
 - `memory/feedback_browser_text_over_screenshot.md`
 
 ## Tools
 
-- `memory/ferramentas-repos.md` — owned tools are symlinks into five public repositories
+- `memory/ferramentas-repos.md` — owned tools are symlinks into six public repositories
 - `memory/adobe-podcast-repo-publico.md`
 - `memory/social-auto-upload.md` — browser upload clones and the local wrappers
 - `memory/ln-line-art.md` — vector 3D line art clone

@@ -1,15 +1,15 @@
-# Caption serif and Pillow overlays
+# Caption face and Pillow overlays
 
-The faces named below are the faces these measures were taken on. A brand with another face uses `memory/visual_identity_standard.md`. Do not copy the face name, or a font file path from another machine, into a new piece. Keep the layout, the measures as a starting point, and the method. Re-measure width when the face changes.
+The measures below were taken on one creator's faces (listed at the end as an example). A brand uses its own faces from `memory/visual_identity_standard.md`. Do not copy a face name, or a font file path from another machine, into a new piece. Keep the layout, the measures as a starting point, and the method. Re-measure width when the face changes.
 
 ## Current type
 
-- **Motion (title, hook card, pill, cutaway, overlay):** **Lato SemiBold 600**. Italic is Lato SemiBold Italic. The Google Fonts cut of Lato has no 600 (only 400, 700, and 900). SemiBold comes from the Lato 3 source: `Lato-Semibold.ttf` and `Lato-SemiboldItalic.ttf`. Put them in the piece's `edit/overlays/fonts/`. Inter 500 is support only (tag, label, chip). JetBrains Mono 500 is only for a number, an address, or a short monospace string. Sora stays off motion.
-- **Captions:** **Hoefler Text**, the weight used on CTA videos: `Hoefler Text.ttc` **index 0 (Regular)**, loaded with `ImageFont.truetype(FONT, size)` and no index. The file on this system is `/System/Library/Fonts/Supplemental/Hoefler Text.ttc`. Off-white `#F7F5F0`, **no background**, a light shadow for legibility.
-- Card layout and motion animation are `memory/padrao-cards-motion-lato.md`.
-- **Carousel type does not follow motion.** Titles stay Sora. Body stays Inter.
+- **Motion (title, hook card, pill, cutaway, overlay):** the **motion face** in `memory/visual_identity_standard.md`, semibold, with its italic for emphasis. Check that the weight you need exists in the font family you installed (a web-font download may lack it). Put the font files in the piece's `edit/overlays/fonts/`. A support face (tag, label, chip) and a monospace face (a number, an address, a short monospace string) come from the same file. The title face of a carousel does not follow motion.
+- **Captions:** the **caption face** in `memory/visual_identity_standard.md`, regular weight, loaded with `ImageFont.truetype(FONT, size)`. A `.ttc` collection needs the right face index, so check it. Off-white text with **no background** and a light shadow for legibility; take the exact off-white from the visual identity file.
+- Card layout and motion animation are `memory/padrao-cards-motion.md`.
 
-An earlier rule put the serif on every motion element. That is retired. Motion is Lato 600. The serif is captions only.
+
+Keep the caption face on captions only. Motion elements use the motion face.
 
 To compare font options, render **one** image with every candidate on a real frame. Do not render a separate preview per face.
 
@@ -28,3 +28,7 @@ Build the overlays as transparent PNGs with Pillow (text plus a shadow via Gauss
 ## Gotcha
 
 On a long list, the last line can pass the vertical safe zone (about 82% of the height against a safe line near 77%). If the layout is reused, narrow the width or reduce the spacing. Do not assume the last line is inside the zone because the first lines are.
+
+## Example: the faces these measures came from
+
+One creator's motion face was Lato SemiBold (the Google Fonts cut has no 600; it came from the Lato 3 source files). Their caption face was Hoefler Text, `.ttc` index 0 (Regular), at `/System/Library/Fonts/Supplemental/Hoefler Text.ttc`, in off-white `#F7F5F0`. Re-measure line width and size for your own faces.

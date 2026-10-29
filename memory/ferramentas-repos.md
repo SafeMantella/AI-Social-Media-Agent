@@ -1,6 +1,6 @@
-# Owned tools live in five public repositories (2026-10-23)
+# Owned tools live in six public repositories (2026-10-28)
 
-The code for the owned tools under `ferramentas/` lives in five public repositories on the SafeMantella account. This project pulls those repositories. It does not keep a second copy of the code.
+The code for the owned tools under `ferramentas/` lives in six public repositories on the SafeMantella account. This project pulls those repositories. It does not keep a second copy of the code.
 
 Read this file before editing any tool.
 
@@ -13,6 +13,7 @@ Read this file before editing any tool.
 | transcrever-ptbr | https://github.com/SafeMantella/transcrever-ptbr | `transcrever` (repository root) |
 | video-tools | https://github.com/SafeMantella/video-tools | `video-camadas`, `slides-pdf` |
 | social-toolbox | https://github.com/SafeMantella/social-toolbox | `keyword-mining`, `minerar-hooks`, `pdf-to-markdown`, `grokbot`, `links`, `extrair-audio`, `grok-imagem` |
+| sau-tools | https://github.com/SafeMantella/sau-tools | `sau-yt` (YouTube Studio, uploads private by default), `sau-tiktok` (TikTok). Nothing uploads until the creator names the file |
 
 Older SafeMantella clones, already gitignored under `ferramentas/`: `Pytho-inator`, `adobe-podcast`, `fontastic-text-image-generator`.
 
@@ -28,13 +29,13 @@ A private index of these repositories may exist in the creator's notes. It is no
 - `ferramentas/<tool>` is a symlink into the clone. Skills, commands, and memory keep the path `ferramentas/<tool>/...`. Do not retarget them.
 - Local state stays inside the clone and out of git: `venv/`, `.profile/`, `.env`, cookies, `__pycache__/`. Never commit those. `grokbot/.env` holds a webhook and a token once it has been filled in.
 - `ferramentas/_old/`, when present, is the pre-move backup. It is gitignored. Do not copy it into this repository.
-- This repository does not track the code of these 16 tools.
+- This repository does not track the code of these 18 tools.
 
 ## Recreate on a new machine
 
 ```bash
 cd ferramentas && mkdir -p _repos
-for r in token-kit video-cut-pipeline transcrever-ptbr video-tools social-toolbox; do
+for r in token-kit video-cut-pipeline transcrever-ptbr video-tools social-toolbox sau-tools; do
   git clone "https://github.com/SafeMantella/${r}.git" "_repos/${r}"
 done
 ln -s _repos/token-kit/prep-frames prep-frames
@@ -53,9 +54,11 @@ ln -s _repos/social-toolbox/grokbot grokbot
 ln -s _repos/social-toolbox/links links
 ln -s _repos/social-toolbox/extrair-audio extrair-audio
 ln -s _repos/social-toolbox/grok-imagem grok-imagem
+ln -s _repos/sau-tools/sau-yt sau-yt
+ln -s _repos/sau-tools/sau-tiktok sau-tiktok
 ```
 
-Then recreate the virtualenvs for `transcrever` and `video-camadas`, and create `grokbot/.env` from `.env.example`. Do not commit them.
+Then recreate the virtualenvs for `transcrever` and `video-camadas`, log in once with `sau-yt login` and `sau-tiktok login` only if the creator uploads from here, and create `grokbot/.env` from `.env.example`. Do not commit them.
 
 ## Update and edit
 

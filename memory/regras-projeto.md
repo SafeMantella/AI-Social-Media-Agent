@@ -42,7 +42,7 @@ The weekly storage review is `.claude/commands/revisar-armazenamento.md`. The da
 
 ## 7. Git update
 
-Once a week this folder pulls `main` from `https://github.com/SafeMantella/AI-Social-Media-Agent.git` and adapts the system files. A copy that already ran the language command does not use `--allow-unrelated-histories`. The procedure is `.claude/commands/atualizar-do-git.md`. The date lives in `memory/atualizacao-git.md`. A due update is a warning and a question. A filled brand file stays as this copy wrote it. Nothing is pushed.
+Every `due_days` (7) this folder pulls `main` from `https://github.com/SafeMantella/AI-Social-Media-Agent.git` and adapts the system files. A copy that already ran the language command does not use `--allow-unrelated-histories`. The procedure is `.claude/commands/atualizar-do-git.md`. The date lives in the `toolkit` row of `memory/toolkit-updates.md`, next to the date of every tool repository. `/update-toolkit` (`.claude/commands/update-toolkit.md`) checks all of them. A due update is a warning and a question at the start of a session. A filled brand file stays as this copy wrote it. Nothing is pushed.
 
 ## 8. Evolution
 

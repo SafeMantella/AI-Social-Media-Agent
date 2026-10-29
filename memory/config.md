@@ -13,4 +13,5 @@ grok_image:
 dm_automation:
 behind_the_scenes:
 face:
+claude_in_chrome:
 writes_scripts:

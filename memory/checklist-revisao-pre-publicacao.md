@@ -5,13 +5,15 @@ Source: outside best-practice notes and a creative-team quality rubric, checked 
 ## Reels and Shorts
 
 1. **Hook in the first 2 seconds** (picture and speech). No slow open and no intro.
-2. **Caption: the first 125 characters work alone** as the hook, before the "more" cutoff.
+2. **Caption: the first 125 characters work alone** as the hook, before the "more" cutoff. Run `ferramentas/checar-legenda/checar-legenda <file> --platform <name>` for the character limit and the hashtag count. Do not count by hand.
 3. **Loop:** the end connects to the beginning (the same word, a match cut, a sentence that joins). Replays and completion rate are the strongest signals.
 4. **Hashtags: 5 to 15 relevant ones** on Instagram (not 30 generic tags). On Shorts, 3 to 5, including `#Shorts`.
 5. **One call to action only** (the comment bait), not "follow plus like plus comment".
 6. **Preview before upload:** watch the final file (resolution, text cut off by the interface, captions) and only then ask the creator to approve. A successful preview is not permission to publish.
 6b. **Paid work:** the native paid-partnership label is on, and the advertising disclosure the country requires is visible before "more". A collab invite does not replace the label. See `memory/parcerias.md`.
 6c. **A Reel reposted as a Short:** upload private, wait for the rights check, then publish. See `memory/youtube-shorts-repost.md`.
+
+6d. **Claims check on the final text.** Rerun `memory/checagem-de-afirmacoes.md` on the version the creator edited. An edit can reintroduce an error, and the caption must not contradict the speech.
 
 ## Carousel
 

@@ -18,7 +18,7 @@ Read this after onboarding. Numbers, handles, and the niche are not in this file
 - `memory/edicao-observada.md` — whether new videos keep that edit. Created only when the read happened.
 - `freebies/` — lead magnets.
 - `gravações/` — local video. Gitignored.
-- `memory/ferramentas-repos.md` — sixteen owned tools are symlinks into `ferramentas/_repos/`. Edit them in the clone.
+- `memory/ferramentas-repos.md` — eighteen owned tools are symlinks into `ferramentas/_repos/`. Edit them in the clone.
 
 ## Pipelines
 
@@ -54,9 +54,9 @@ The creator approves before anything is scheduled or published.
 
 This folder collects virtualenvs, downloads, frames, and renders. On every open, read `memory/revisao-armazenamento.md`. When the review is due, warn and ask before other work. The measurement and the file changes are two separate yeses. The procedure is `.claude/commands/revisar-armazenamento.md`.
 
-## Git update
+## Toolkit update
 
-On every open, read `memory/atualizacao-git.md`. When the weekly pull is due, warn and ask before other work, after the storage question if that one is also due. A yes follows `.claude/commands/atualizar-do-git.md`. Filled brand files stay. Nothing is pushed.
+At the start of every session, read `memory/toolkit-updates.md`. When the toolkit or any tool repository is due, say which and ask to run `/update-toolkit`, after the storage question if that one is also due. A yes follows `.claude/commands/update-toolkit.md`. Filled brand files stay. Nothing is pushed.
 
 ## Evolution
 

@@ -50,14 +50,14 @@ Flow: extract the audio from the hand edit, run whisperx plus vad, run `glossari
 - Cues are at most 5 words. Break on a comma or a pause. Never end on a function word ("que", "o", "de", and the equivalent in the recording's language). Continuous speech keeps the cue open until the next one. A real pause (at least 0.25s) closes on the end of the energy.
 - An odd phrase that two transcripts and an isolated window all agree on is real speech, not a hallucination. If it still sounds wrong, ask the creator. Do not delete it.
 
-Burned-in captions follow `memory/hyperframes_caption_style.md` and `memory/feedback-legenda-serifada-hoefler-overlay-pillow.md` (serif, no background, at most 5 words). An older petroleum pill in a sans face is retired. Do not bring it back.
+Burned-in captions follow `memory/hyperframes_caption_style.md` and `memory/feedback-legenda-overlay-pillow.md` (serif, no background, at most 5 words). An older petroleum pill in a sans face is retired. Do not bring it back.
 
 ## Motion on a hand edit
 
 - One HyperFrames project in `<topic>/edit/overlays/` (`index.html`, canvas 1080×1920, one timeline). Preview: `render --format mov --quality draft --fps 30`, then `compor.py preview <overlay.mov> <out.mp4>` (base scaled to 1080, zoom by `scale` with `eval=frame` plus a crop anchored at y=30%, alpha overlay). Final, only when authorized: `render --resolution portrait-4k --fps 60`, then `compor.py final`. A draft render of an overlay near 90 seconds takes about a minute.
-- When `face` is `yes`, measure the face band and put chips on the empty background above the head. End large cards above any chapter marker already on screen. Do not cover the face unless the layout is the list exception in the caption note. Card geometry is `memory/padrao-cards-motion-lato.md`.
+- When `face` is `yes`, measure the face band and put chips on the empty background above the head. End large cards above any chapter marker already on screen. Do not cover the face unless the layout is the list exception in the caption note. Card geometry is `memory/padrao-cards-motion.md`.
 - A tall table (on the order of 654×2020) is illegible if it is fitted whole into a full-screen cut. It reads with a pan and zoom per row (about 950px wide) plus a note underneath.
-- Overlay sound is **clicks, not pops**. `edit/overlays/sfx.py` builds the track (`clicks.wav`: a main click on each card or chip, a soft click on inner steps, a "cut" on full-screen changes, very quiet ticks on counters). A worked mix peaked near −22 dBFS against a voice at −19 LUFS. `compor.py` mixes with `amix`. Measure this piece. Do not copy the gain. No music bed unless the creator asks. The click map (`main`, `soft`, `tick`, `cut`) is `memory/padrao-cards-motion-lato.md`.
+- Overlay sound is **clicks, not pops**. `edit/overlays/sfx.py` builds the track (`clicks.wav`: a main click on each card or chip, a soft click on inner steps, a "cut" on full-screen changes, very quiet ticks on counters). A worked mix peaked near −22 dBFS against a voice at −19 LUFS. `compor.py` mixes with `amix`. Measure this piece. Do not copy the gain. No music bed unless the creator asks. The click map (`main`, `soft`, `tick`, `cut`) is `memory/padrao-cards-motion.md`.
 
 ## Replacing raw audio inside a hand edit, then a bed
 

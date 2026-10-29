@@ -9,6 +9,6 @@ Directions to choose from:
 - Text behind the person, when `face` is `yes`. Skip this direction when `face` is `no`.
 - Kinetic type, full frame, no card.
 - A scene that takes the whole frame, then returns.
-- The card mold in `memory/padrao-cards-motion-lato.md`.
+- The card mold in `memory/padrao-cards-motion.md`.
 
 The face, the palette, and the type come from `memory/visual_identity_standard.md`. This list does not name a font.

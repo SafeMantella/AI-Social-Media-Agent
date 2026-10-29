@@ -1,4 +1,6 @@
-# Canva brand kit
+# Canva brand kit (legacy)
+
+Only for a copy that already runs `carousel: canva`. Onboarding no longer offers Canva; new copies build carousels with `claude` or `hyperframes` (`.claude/commands/carousel.md`).
 
 How to set up the kit, and where the ids go. Colors and type are not in this file. After onboarding they live in `estrategia/00-identidade-visual.md` and `memory/visual_identity_standard.md`. Copy from those files into Canva. If a color or a font is missing there, stop and finish onboarding. Do not invent a palette here.
 

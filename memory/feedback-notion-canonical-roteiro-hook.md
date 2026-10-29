@@ -6,7 +6,7 @@ Every script or hook follows these three steps, in this order.
    - Will there be a CTA?
    - Format: a closed short script (timed table) or a looser talk (guide points, not a word-for-word script)?
 2. Run research at the quick tier with the angle from the interview. Write `referencia/pesquisas/<slug>/RESUMO.md`. Use only the tools enabled in `memory/config.md`. See `pipeline_pesquisa.md`.
-3. Write the script in the canonical store from `storage`:
+3. Write the script in the canonical store from `storage`, then run the claims check in `memory/checagem-de-afirmacoes.md` and add its table under "Claims check" before asking for approval:
    - `notion`: the idea page (hook property, script table or guide points, hook alternatives, production notes, dated sources).
    - `md`: `conteudo/roteiros/<slug>.md` with the same sections.
 

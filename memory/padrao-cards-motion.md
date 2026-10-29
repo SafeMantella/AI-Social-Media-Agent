@@ -1,4 +1,4 @@
-# Motion-card layout (1080×1920, Lato 600)
+# Motion-card layout (1080×1920)
 
 The face in the title is the face these measures were taken on. Use the face in `memory/visual_identity_standard.md`. Re-measure line width when the face changes. Layout, sizes, and method stay. This card is one mold, not the only one. See `memory/direcoes-motion.md`.
 
@@ -14,9 +14,9 @@ Card at `left: 60`, `width: 960`, `top: 236`, radius 30, petroleum `rgba(30,58,7
 
 ## Type
 
-Title or phrase in Lato 600 (italic 600 for emphasis), 52–88px depending on the card. Tag in Inter 500, uppercase, amber, 30px. Support label in Inter 500, 30–32px. A number, an address, or a short monospace string is JetBrains Mono, 28–30px. Nothing under 28px. Below that it reads small in a 960px-wide preview.
+Title or phrase in the motion face, semibold (its italic for emphasis), 52–88px depending on the card. Tag in the support face, medium weight, uppercase, in the accent color, 30px. Support label in the support face, 30–32px. A number, an address, or a short monospace string is the monospace face, 28–30px. Nothing under 28px. Below that it reads small in a 960px-wide preview.
 
-Font files and the caption serif are `memory/feedback-legenda-serifada-hoefler-overlay-pillow.md`.
+Font files and the caption serif are `memory/feedback-legenda-overlay-pillow.md`.
 
 ## Image cards
 
@@ -58,7 +58,7 @@ Clicks, not pops. `build.py` writes each animation event to `events.json`. `sfx.
 
 ## Review before the preview
 
-1. Lato 600 on motion, Hoefler only on captions.
+1. The motion face on motion, the caption face only on captions.
 2. Cards from y236 to about y500. Nothing within 28px of the bottom edge. Type at least 28px. When `face` is `yes`, the card clears the head.
 3. **Entrance and exit are animated** on every card. A hard full-screen cut is the only exception.
 4. A sound on every animation, level measured against this voice.
@@ -72,7 +72,7 @@ Clicks, not pops. `build.py` writes each animation event to `events.json`. `sfx.
 - Alpha at 4K: `FFMPEG_ENCODE_TIMEOUT_MS=7200000 npx hyperframes render --format mov --resolution portrait-4k --fps 60 -o render_alpha_final4k.mov`. Without the environment variable the ProRes 4444 encode dies at 700s (`ffmpegEncodeTimeout`). About 10,500 frames: capture near 13 minutes plus encode near 12 minutes on an idle machine (about 5.8GB). Another observed overlay of this class was about 13 minutes of render plus about 6 minutes of composite, 392MB at 41Mbps. Plan for that. Do not start it unless the creator has asked for full resolution.
 - Another heavy render on the machine multiplies the time and has killed the job with exit 137 (SIGKILL). Before a long render: `ps -eo pid,etime,command | grep "hyperframes render"`. If another is running, wait or say so. Never a generic `pkill -f "hyperframes render"`. That matches everyone else's render. Filter on this job's `-o <filename>`.
 - A background render is a direct command. `a && nohup b &` is cancelled with `render_cancelled_parent_exited`. A subshell `( ... ) &` is cancelled when the parent exits. Chain `render && compor_final.sh` in the same command. Waiting on `pgrep -f "hyperframes render"` matches the wait script itself and loops forever.
-- 4K captions: an `ffv1` layer with alpha (`captions_final.mkv`, about 0.9GB) built from Pillow PNGs through the concat demuxer. Hoefler Regular, index 0, 62px at 960 (×2.25), center y=1250 at 960. **One line** (width measured with that font, at most 790px at 62px) and a break that does not end on a function word. The same `build.py` at font 140 on a 2160×3840 canvas at 60fps is the 4K caption pass.
+- 4K captions: an `ffv1` layer with alpha (`captions_final.mkv`, about 0.9GB) built from Pillow PNGs through the concat demuxer. The caption face, regular, 62px at 960 (×2.25), center y=1250 at 960. **One line** (width measured with that font, at most 790px at 62px) and a break that does not end on a function word. The same `build.py` at font 140 on a 2160×3840 canvas at 60fps is the 4K caption pass.
 - Final assembly: `libx264 -preset slow -crf 14` plus `-c:a aac -b:a 320k`. About 0.15× realtime (about 20 minutes for 2:54), about 1.25GB (about 57Mbps).
 
 ## Variety
