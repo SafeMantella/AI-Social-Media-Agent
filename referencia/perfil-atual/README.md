@@ -2,7 +2,7 @@
 
 Empty until onboarding. When `existing_content` in `memory/config.md` is `yes`, the interview writes:
 
-- `fontes.md` — the profile URLs the creator named
+- `fontes.md` — the profile URLs the creator named, and under `Posts` the three post links they chose
 - `<platform>/<id>.md` — caption, transcript, and what the frames showed
 - `RESUMO.md` — what repeats, and the drafts the later questions confirm
 
