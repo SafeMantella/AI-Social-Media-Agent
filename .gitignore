@@ -48,6 +48,8 @@ ferramentas/grokbot
 ferramentas/links
 ferramentas/extrair-audio
 ferramentas/grok-imagem
+ferramentas/sau-yt
+ferramentas/sau-tiktok
 
 # Tool output and session files
 ferramentas/instagram-transcript/downloads/

@@ -1,0 +1,44 @@
+#!/usr/bin/env python3
+"""Count a caption against a platform limit and list its hashtags. Usage: checar-legenda <file|-> [--platform instagram|tiktok|youtube|x|linkedin] [--limit N] | --self-check
+Last line is the verdict. Limits change: re-check them against the platform when it matters, or pass --limit."""
+import re, sys
+
+LIMITES = {"instagram": 2200, "tiktok": 4000, "youtube": 5000, "x": 280, "linkedin": 3000}  # ponytail: code points, not UTF-16; the app may count an emoji as 2
+HASHTAGS = {"instagram": (5, 15), "tiktok": (3, 8), "youtube": (3, 5), "x": (0, 2), "linkedin": (3, 5)}  # ranges from memory/checklist-revisao-pre-publicacao.md
+
+
+def analisar(texto, plataforma="instagram", limite=None):
+    limite = limite or LIMITES[plataforma]
+    tags = re.findall(r"#\w+", texto)
+    lo, hi = HASHTAGS[plataforma]
+    avisos = []
+    if len(texto) > limite:
+        avisos.append(f"{len(texto) - limite} over the limit")
+    if not lo <= len(tags) <= hi:
+        avisos.append(f"{len(tags)} hashtags (want {lo} to {hi})")
+    if len(set(t.lower() for t in tags)) < len(tags):
+        avisos.append("repeated hashtag")
+    return {"chars": len(texto), "limit": limite, "tags": tags, "hook": texto.strip()[:125], "avisos": avisos}
+
+
+def main(a):
+    plat = a[a.index("--platform") + 1] if "--platform" in a else "instagram"
+    lim = int(a[a.index("--limit") + 1]) if "--limit" in a else None
+    arq = next((x for i, x in enumerate(a) if not x.startswith("--") and (i == 0 or a[i - 1] not in ("--platform", "--limit"))), "-")
+    r = analisar(sys.stdin.read() if arq == "-" else open(arq).read(), plat, lim)
+    print(f"characters: {r['chars']} / {r['limit']} ({plat})")
+    print(f"hashtags ({len(r['tags'])}): {' '.join(r['tags'])}")
+    print(f"first 125 characters, the part seen before \"more\": {r['hook']!r}")
+    print("verdict: " + ("ok" if not r["avisos"] else "; ".join(r["avisos"])))
+
+
+def self_check():
+    r = analisar("Hello #a #b #c #d #e", "instagram")
+    assert r["chars"] == 20 and not r["avisos"]
+    assert analisar("x" * 2201 + " #a", "instagram")["avisos"]
+    assert "repeated hashtag" in analisar("#a #A #b #c #d", "instagram")["avisos"]
+    print("self-check ok")
+
+
+if __name__ == "__main__":
+    self_check() if sys.argv[1:] == ["--self-check"] else main(sys.argv[1:])

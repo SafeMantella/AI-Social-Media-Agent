@@ -1,0 +1,71 @@
+#!/usr/bin/env python3
+"""Export this folder's latest Claude Code session to a Markdown file the creator can read or send. Usage: exportar-sessao [--out FILE.md] | --self-check
+Keeps what the creator and the agent said and one line per tool call. Masks the home path, emails, and key-like strings. Writes outside the repo by default. Uploads nothing."""
+import json, re, sys
+from pathlib import Path
+
+RAIZ = Path(__file__).resolve().parents[2]
+HOME = str(Path.home())
+SEGREDO = re.compile(r"(sk-[A-Za-z0-9_-]{16,}|Bearer\s+[A-Za-z0-9._-]{16,}|[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,})")
+
+
+RUIDO = re.compile(r"<(system-reminder|local-command-stdout|task-notification)>.*?</\1>", re.S)  # harness text, not conversation
+
+
+def limpar(t):
+    return SEGREDO.sub("[masked]", RUIDO.sub("", t).replace(HOME, "~")).strip()
+
+
+def sessao(raiz=RAIZ):
+    pasta = Path.home() / ".claude/projects" / re.sub(r"[^A-Za-z0-9]", "-", str(raiz))
+    arqs = sorted(pasta.glob("*.jsonl"), key=lambda p: p.stat().st_mtime)
+    return arqs[-1] if arqs else None
+
+
+def turnos(arq):
+    for l in arq.read_text().splitlines():
+        try:
+            d = json.loads(l)
+        except ValueError:
+            continue
+        if d.get("type") not in ("user", "assistant") or d.get("isSidechain"):
+            continue
+        c = d.get("message", {}).get("content")
+        blocos = [{"type": "text", "text": c}] if isinstance(c, str) else (c or [])
+        texto = [b["text"].strip() for b in blocos if b.get("type") == "text" and b.get("text", "").strip()]
+        ferr = [b["name"] for b in blocos if b.get("type") == "tool_use"]
+        if d["type"] == "user" and not texto:
+            continue  # tool results only
+        if texto or ferr:
+            yield d["type"], "\n\n".join(texto), ferr
+
+
+def para_markdown(itens):
+    out = ["# Session history", ""]
+    for papel, texto, ferr in itens:
+        out += [f"## {'User' if papel == 'user' else 'Agent'}", "", limpar(texto) if texto else "", ""]
+        if ferr:
+            out += [f"_Tools: {', '.join(ferr)}_", ""]
+    return "\n".join(out)
+
+
+def main(a):
+    arq = sessao()
+    if not arq:
+        sys.exit("no session file found for this folder")
+    out = Path(a[a.index("--out") + 1]).expanduser() if "--out" in a else Path.home() / "Desktop" / f"session-history-{arq.stem[:8]}.md"
+    if RAIZ in out.resolve().parents:
+        sys.exit("refusing to write inside the repo: the history can hold personal data")
+    out.write_text(para_markdown(turnos(arq)))
+    print(f"wrote {out}\nresumo: {sum(1 for _ in turnos(arq))} turns, masked home path, emails, and key-like strings")
+
+
+def self_check():
+    md = para_markdown([("user", f"hi {HOME}/x me@a.com", []), ("assistant", "ok", ["Bash"])])
+    assert "secret" not in para_markdown([("user", "a<system-reminder>secret</system-reminder>b", [])])
+    assert "~/x" in md and "[masked]" in md and "_Tools: Bash_" in md and "me@a.com" not in md
+    print("self-check ok")
+
+
+if __name__ == "__main__":
+    self_check() if sys.argv[1:] == ["--self-check"] else main(sys.argv[1:])

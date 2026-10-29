@@ -1,0 +1,47 @@
+#!/usr/bin/env python3
+"""List the music used by reference reels and count repeats. Usage: audio-do-reel <url>... [--cookies FILE] [--out FILE.md] | --self-check
+Reads yt-dlp metadata only (no download). A reel with no music metadata is reported as 'original audio / not identified'.
+The ranking inside the app is not available to any tool: a repeat across YOUR references is the only data this gives."""
+import collections, json, shutil, subprocess, sys
+from pathlib import Path
+
+
+def musica(info):
+    t, a = info.get("track"), info.get("artist") or info.get("creator")
+    return f"{a} - {t}" if t and a else (t or "original audio / not identified")
+
+
+def contar(infos):
+    c = collections.Counter(musica(i) for i in infos)
+    linhas = ["| music | reels |", "|---|---|"] + [f"| {m} | {n} |" for m, n in c.most_common()]
+    rep = [m for m, n in c.items() if n > 1 and not m.startswith("original")]
+    return "\n".join(linhas) + ("\n\nrepeats: " + "; ".join(rep) if rep else "\n\nno music repeats across these reels")
+
+
+def main(a):
+    cook = a[a.index("--cookies") + 1] if "--cookies" in a else None
+    out = a[a.index("--out") + 1] if "--out" in a else None
+    urls = [x for i, x in enumerate(a) if x.startswith("http")]
+    exe = shutil.which("yt-dlp") or str(Path.home() / ".local/bin/yt-dlp")
+    infos = []
+    for u in urls:
+        r = subprocess.run([exe, "-J", "--skip-download", "--no-warnings", *(["--cookies", cook] if cook else []), u], capture_output=True, text=True)
+        if r.returncode:
+            print(f"error {u}: {r.stderr.strip().splitlines()[-1] if r.stderr.strip() else 'failed'}")
+            continue
+        infos.append(json.loads(r.stdout))
+    res = contar(infos)
+    Path(out).write_text(res + "\n") if out else None
+    print(res)
+    print(f"resumo: {len(infos)} of {len(urls)} reels read")
+
+
+def self_check():
+    infos = [{"track": "Gnossienne No. 1", "artist": "Erik Satie"}, {"track": "Gnossienne No. 1", "artist": "Erik Satie"}, {}]
+    r = contar(infos)
+    assert "| Erik Satie - Gnossienne No. 1 | 2 |" in r and "repeats: Erik Satie" in r and "original audio" in r
+    print("self-check ok")
+
+
+if __name__ == "__main__":
+    self_check() if sys.argv[1:] == ["--self-check"] else main(sys.argv[1:]) if sys.argv[1:] else sys.exit(__doc__)

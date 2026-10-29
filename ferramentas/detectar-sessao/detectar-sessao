@@ -1,0 +1,50 @@
+#!/usr/bin/env python3
+"""Find which installed browser holds a logged-in session for a URL and export it as a cookie file for yt-dlp.
+Usage: detectar-sessao <url> [--out FILE] | --self-check. Default out: ~/.ig_session.txt (mode 600, never inside the repo).
+Each browser read may raise a macOS keychain prompt; the creator runs this in Terminal. The file holds the sessions of EVERY site in that browser."""
+import os, shutil, subprocess, sys
+from pathlib import Path
+
+AS = Path.home() / "Library/Application Support"
+NAVEGADORES = {  # yt-dlp name -> where its profile lives on macOS
+    "chrome": AS / "Google/Chrome", "brave": AS / "BraveSoftware/Brave-Browser", "edge": AS / "Microsoft Edge",
+    "opera": AS / "com.operasoftware.Opera", "vivaldi": AS / "Vivaldi", "chromium": AS / "Chromium",
+    "firefox": AS / "Firefox/Profiles", "safari": Path.home() / "Library/Cookies/Cookies.binarycookies",
+}
+RAIZ = Path(__file__).resolve().parents[2]
+
+
+def instalados(base=None):
+    return [n for n, p in (base or NAVEGADORES).items() if p.exists()]
+
+
+def tentar(nav, url, out):
+    exe = shutil.which("yt-dlp") or str(Path.home() / ".local/bin/yt-dlp")
+    r = subprocess.run([exe, "--cookies-from-browser", nav, "--cookies", str(out), "--skip-download", "-q", "--no-warnings", url], capture_output=True, text=True)
+    return r.returncode == 0
+
+
+def main(a):
+    url = a[0]
+    out = Path(a[a.index("--out") + 1]).expanduser() if "--out" in a else Path.home() / ".ig_session.txt"
+    if RAIZ in out.resolve().parents:
+        sys.exit("refusing to write a session file inside the repo")
+    achados = instalados()
+    print("browsers found: " + (", ".join(achados) or "none"))
+    for nav in achados:
+        if tentar(nav, url, out):
+            os.chmod(out, 0o600)
+            print(f"ok {nav}: session exported to {out}. It holds every site logged in on {nav}. Keep it outside git and do not share it.")
+            return
+        print(f"no   {nav}: no usable session for this URL")
+    sys.exit("resumo: no browser gave a session. Log in to the site in one of them and run again.")
+
+
+def self_check():
+    falso = {"chrome": Path("/nonexistent/a"), "opera": Path("/tmp")}
+    assert instalados(falso) == ["opera"]
+    print("self-check ok")
+
+
+if __name__ == "__main__":
+    self_check() if sys.argv[1:] == ["--self-check"] else main(sys.argv[1:]) if sys.argv[1:] else sys.exit(__doc__)

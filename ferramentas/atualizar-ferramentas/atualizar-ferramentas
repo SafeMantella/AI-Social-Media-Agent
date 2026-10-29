@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Atualiza (git pull --ff-only) os repos clonados em ferramentas/. Uso: atualizar-ferramentas [nome] | --self-check
-Uma linha por ferramenta; a última linha é o resumo. Árvore suja = bloqueada, nada é instalado."""
-import subprocess, sys, tempfile
+Uma linha por ferramenta; a última linha é o resumo. Árvore suja = bloqueada, nada é instalado.
+Cada checagem sem erro grava a data em memory/toolkit-updates.md."""
+import datetime, re, subprocess, sys, tempfile
 from pathlib import Path
 
 MANIFESTOS = {"requirements.txt", "pyproject.toml", "package.json", "Pipfile"}
@@ -28,6 +29,20 @@ def atualizar(d):
         msg += " — dependência mudou, reinstalar"
     return "atualizada", msg
 
+def registrar(raiz, nome):  # grava a data da checagem em memory/toolkit-updates.md (ou memoria/ depois do passe de idioma)
+    for pasta in ("memory", "memoria"):
+        f = raiz.parent / pasta / "toolkit-updates.md"
+        if f.exists(): break
+    else: return
+    hoje, linhas = datetime.date.today().isoformat(), f.read_text().splitlines()
+    nova = f"| {nome} | {hoje} |"
+    for i, l in enumerate(linhas):
+        if re.match(rf"\|\s*{re.escape(nome)}\s*\|", l): linhas[i] = nova; break
+    else:
+        fim = max((i for i, l in enumerate(linhas) if l.startswith("|")), default=len(linhas) - 1)
+        linhas.insert(fim + 1, nova)
+    f.write_text("\n".join(linhas) + "\n")
+
 def main(nome=None):
     raiz = Path(__file__).resolve().parents[1]
     # symlinks de ferramenta apontam pra dentro de _repos/: iterar _repos/ e pular os symlinks evita duplicata
@@ -38,6 +53,7 @@ def main(nome=None):
     for p in alvos:
         st, msg = atualizar(p)
         cont[st] = cont.get(st, 0) + 1
+        if st != "erro": registrar(raiz, p.name)  # erro = não checou de verdade
         print(f"{p.name}: {msg}")
     print("resumo: " + (", ".join(f"{n} {s}" for s, n in cont.items()) or "nenhuma ferramenta git em ferramentas/"))
 
@@ -50,6 +66,10 @@ def self_check():  # cria origem + clone em tmp, empurra 1 commit e confere o pu
         sh("git", "-C", str(t / "o"), "-c", "user.name=t", "-c", "user.email=t@t", "commit", "-q", "--allow-empty", "-m", "b")
         (t / "c" / "x").write_text("x"); assert atualizar(t / "c")[0] == "bloqueada"  # status --porcelain conta arquivo novo
         (t / "c" / "x").unlink(); assert atualizar(t / "c")[0] == "atualizada"
+        r = t / "ferramentas"; (t / "memory").mkdir(); r.mkdir()  # registro: atualiza linha existente e acrescenta nova
+        (t / "memory" / "toolkit-updates.md").write_text("| item | last_checked |\n|---|---|\n| x | |\n")
+        registrar(r, "x"); registrar(r, "y"); txt = (t / "memory" / "toolkit-updates.md").read_text()
+        assert txt.count("| x | 20") == 1 and "| y | 20" in txt
     print("self-check ok")
 
 if __name__ == "__main__":
