@@ -1,10 +1,10 @@
 ---
-description: Once a week, pull the template main into this folder and adapt the system files. Keep filled brand files as they are.
+description: Pull the template main into this folder and adapt the system files. Keep filled brand files as they are.
 ---
 
 # Update this folder from git
 
-Read this file and follow it. It is a workflow. The creator runs it by asking, and the agent asks for it when `memory/atualizacao-git.md` says the update is due.
+Read this file and follow it. It is a workflow. The creator runs it by asking, and `/update-toolkit` runs it as its step 3.
 
 The template is `https://github.com/SafeMantella/AI-Social-Media-Agent.git`, branch `main`. A yes to the question that opened this command approves the pull and the adaptation below. It does not approve a push, an issue, or a pull request.
 
@@ -75,10 +75,6 @@ When both sides changed the same system lines, take the new rule. Keep a local s
 
 ## After
 
-Tell the creator what came in, what you adapted, and what you kept. Then update `memory/atualizacao-git.md`:
+Tell the creator what came in, what you adapted, and what you kept. Then write today's date (`YYYY-MM-DD`) in the `toolkit` row of `memory/toolkit-updates.md`, including when `main` was already current.
 
-- `last_pull`: today, `YYYY-MM-DD`, including when `main` was already current
-- clear `asked_on` and `defer_until`
-- append one log line: the date, and either `already current` or the commit subjects that arrived
-
-A closed chat with no yes is not an update. Leave `last_pull` as it was.
+A closed chat with no yes is not an update. Leave the date as it was.

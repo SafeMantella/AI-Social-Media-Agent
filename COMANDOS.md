@@ -7,14 +7,21 @@
 | Command | What it does | When | Argument |
 |---|---|---|---|
 | `/aplicar-idioma` | After onboarding's readback, put the markdown and the creator-facing folders in content_language | Once, after the onboarding readback. | — |
-| `/atualizar-do-git` | Once a week, pull the template main into this folder and adapt the system files | When the weekly template pull is due. | — |
+| `/ativar-ferramenta` | Turn on an optional integration after express onboarding: ask its question, install it, test the capability, and write… | After express onboarding, when the creator wants an optional integration. | <tool or config key> |
+| `/atualizar-do-git` | Pull the template main into this folder and adapt the system files | When the template pull runs, or when the creator asks for it alone. | — |
 | `/atualizar-ferramentas` | Check the cloned tools under ferramentas/ against their remotes, and fast-forward the ones that are behind. | When a cloned tool may be behind its remote. | [optional tool name] |
 | `/atualizar-memoria` | Scan this session for decisions, corrections, and patterns that are not saved yet, and update memory/ in this project… | At the end of a session with decisions that are not saved yet. | — |
 | `/avaliar-edicao` | Prepare a video for the manual edit review, then wait for the creator's decisions. | When a raw video needs the manual cut review. | <raw video, and the clean audio if it exists> |
+| `/carousel` | Build a carousel with the fixed pipeline: interview, research, plan in the store, approval, then build with Claude's… | When a carousel is requested. | <idea or topic> |
 | `/check-skills` | Show where an existing skill can shrink to one local Python CLI, and what judgment stays with the agent. | When a skill has steps one local Python CLI could finish. | [root] |
 | `/comandos` | Show the command and skill manual | When you need the list of commands. | — |
+| `/doctor` | Check that this machine has what memory/config.md says the toolkit needs, and say what to fix. | After setup, after moving to a new machine, or when a tool fails to start. | — |
 | `/edicao` | Open the manual edit-review artifact | When opening the manual cut-review page. | [optional path to the raw video] |
+| `/exportar-sessao` | Export this session to a Markdown file with personal strings masked, only if the creator asks for it. | When the creator asks to save or send this conversation. | — |
+| `/iniciar` | Open a session cheaply | At the start of a session. | — |
+| `/learn-from-edit` | Learn from the creator's own rewrite of a draft: compare, extract numbered rules, confirm the risky ones, and save… | When the creator pastes their own version of a draft. | <the creator's version, or its file path> |
 | `/map-automation-opportunities` | Rank repeated workflows and point at where one local Python CLI can finish the whole task. | When a repeated workflow is still written as steps. | [root] |
+| `/onboarding` | Start or resume the setup interview | Once, right after opening the folder: it is the whole setup. | — |
 | `/pesquisar` | Research a subject, profile, or piece with the tools enabled in memory/config.md, then write… | Before a new piece, on a subject, a profile, or a work. | — |
 | `/refinar-overlay` | Correct an overlay that is already composited on a video in this folder | When an overlay on a video is colliding or misplaced. | — |
 | `/registrar-bastidores` | Record this session's technical decisions as the next case in the behind-the-scenes series | When behind_the_scenes is yes and the session changed the system. | — |
@@ -22,14 +29,16 @@
 | `/revisar-armazenamento` | Measure this folder, propose what to move or remove, and change nothing until the creator approves those paths. | When the weekly storage review is due. | — |
 | `/revisar-video` | Review a video's picture and words with a contact sheet, OCR, and a compact transcript. | Before giving notes on an edited video. | <path to the video> |
 | `/sugerir-conteudo` | Suggest content ideas from the work done this session | At the end of a working session, for content ideas. | — |
+| `/update-toolkit` | Check the toolkit and every tool repository for updates, apply what is behind, and record the dates in… | When the session-start check says the toolkit or a tool repo is due. | — |
 
 ## Skills
 
 | Skill | What it is for |
 |---|---|
+| `catalogo-ferramentas` | Catalog of every tool in ferramentas/, one folder each, with what it does, how to run it, and where its code lives |
 | `ferramentas-locais` | Local tools and external connections for this social-media project |
 | `pytho-inator` | Quando uma resposta terminou um trabalho repetível, sugere um CLI Python local que faz a tarefa inteira num comando |
-| `sistema-social-media` | Operating rules for this social-media system — visual identity, a native Canva carousel (never an AI-generated design), the content store, and hook… |
+| `sistema-social-media` | Operating rules for this social-media system — visual identity, a carousel built with Claude's design tools or HyperFrames (Canva only on a legacy… |
 | `slides-pdf` | Turn an HTML slide deck into a PDF, one page per slide, and fail when a slide overflows its box |
 | `transcricao-confiavel` | Transcribe local video or audio without silently dropping speech |
 | `video-camadas` | Build a person mask, a green-screen matte, a face-free zone, a zoom table, and a layered preview for a talking-head video |

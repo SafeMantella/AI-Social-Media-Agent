@@ -1,6 +1,6 @@
 ---
 name: sistema-social-media
-description: Operating rules for this social-media system — visual identity, a native Canva carousel (never an AI-generated design), the content store, and hook and repurposing rules. Use when creating or editing a script, carousel, post, caption, video, or calendar, or when changing the store or Canva setup for this system.
+description: Operating rules for this social-media system — visual identity, a carousel built with Claude's design tools or HyperFrames (Canva only on a legacy copy), the content store, and hook and repurposing rules. Use when creating or editing a script, carousel, post, caption, video, or calendar, or when changing the store or Canva setup for this system.
 ---
 
 # Social media system
@@ -37,11 +37,12 @@ Always in this order.
 1. **Interview the creator first** (concrete options): the angle and the takeaway, the universal pain slide 1 attacks, the reference tool, the scope, the CTA on the last slide, and what must not appear in the hook or the turn.
 2. **Research, quick tier,** on that angle. Same workflow as the script pipeline. The RESUMO feeds the plan: hook language that performed, a pain validated in a real post, concrete examples, top pieces, and open angles.
 3. **Write the plan, then stop.** Slide-by-slide structure, one native visual element per slide (the vocabulary below — never an illustration or clipart), the **caption (1–3 sentences)**, the hashtags, and a dated "Research sources" section. The carousel already carries the content. The caption is a short note in the creator's voice (`memory/estilo-de-escrita/`): no coach talk, no "follow for more". The CTA is already on the last slide. Write the short caption first. Do not draft a long one and trim it later.
-   - `carousel: md` — the markdown file is the piece. Write `conteudo/carrosseis/<slug>.md`. **Canva is not used.**
+   - `carousel: md` — the markdown file is the piece. Write `conteudo/carrosseis/<slug>.md`. Nothing is built.
+   - `carousel: claude` or `hyperframes` — the plan goes in the store (`storage: notion`: the body of the ready-content page; `storage: md`: `conteudo/carrosseis/<slug>.md`). The build comes after approval.
    - `carousel: canva` and `storage: notion` — the plan goes in the body of the ready-content page. Create the page if it does not exist.
    - `carousel: canva` and `storage: md` — the plan goes in `conteudo/carrosseis/<slug>.md`. Canva is only the build, after approval.
-4. **The plan is approved before the Canva build.** Wait for an explicit yes. If `carousel` is `md`, this approval is on the markdown file and there is no build step.
-5. **Build only when `carousel` is `canva`.** Duplicate the master template whose id is in `estrategia/marca/ids.md`. Never generate a design with AI (`generate-design` or any other generator). Never create a new text box from scratch: copy a slide that already has the right font, then replace the text (`replace_text` keeps the font of the run). The Canva API does not set the font family; a fresh text box lands on the mono face and becomes manual rework. If the master id is missing, stop and follow `estrategia/06-brand-kit-canva-plano.md`. Do not invent an id. Show the link in the chat and keep Status, the asset link, and the plan in the store in sync with the design.
+4. **The plan is approved before the build.** Wait for an explicit yes. If `carousel` is `md`, this approval is on the markdown file and there is no build step.
+5. **Build.** `claude` and `hyperframes` follow `.claude/commands/carousel.md`. The rest of this step is for a legacy `carousel: canva` copy. Duplicate the master template whose id is in `estrategia/marca/ids.md`. Never generate a design with AI (`generate-design` or any other generator). Never create a new text box from scratch: copy a slide that already has the right font, then replace the text (`replace_text` keeps the font of the run). The Canva API does not set the font family; a fresh text box lands on the mono face and becomes manual rework. If the master id is missing, stop and follow `estrategia/06-brand-kit-canva-plano.md`. Do not invent an id. Show the link in the chat and keep Status, the asset link, and the plan in the store in sync with the design.
 
 **After the build.** What the agent delivers is a draft. The creator may still do a manual pass (shorter, more casual lines, vertical rhythm, sometimes the close). When the piece is finished, reread the final design and the final caption, compare them with what was delivered, and save what changed in `memory/feedback-carousel-pipeline.md`. Do that without being asked. The aim is less correction on the next one.
 
@@ -92,17 +93,17 @@ When the creator sends a new profile as a reference, do both steps, not only the
 
 That requires the actual profile (grid, highlights, 2–3 representative posts or videos, the link in the bio). The landing view is not enough to judge format or hook. Why the bank exists is in `memory/growth_sales_critical_lens.md`.
 
-## Carousels are native Canva, or markdown
+## Carousels: Claude's design tools, HyperFrames, or markdown
 
-**Never generate a design with AI.** It was tried and rejected: generic illustration and texture, off the identity.
+When `carousel` is `claude` or `hyperframes`, the slides are built from `memory/visual_identity_standard.md` and `estrategia/00-identidade-visual.md`: one native type-and-shape element per slide, never clipart or a generated illustration. Type is the title face, heavier on slide 1 (the hook), the body face on the rest. Pipeline and build: `.claude/commands/carousel.md`.
 
-When `carousel` is `canva`:
+Legacy `carousel: canva`. **Never generate a design with AI** there: it was tried and rejected, generic and off the identity.
 
 - Duplicate the master template whose id is in `estrategia/marca/ids.md`. Never generate from scratch. Duplicating keeps the fonts that were set by hand.
 - **A slide or element that is not on the master: copy a slide that already has the right font and change only the text. Never create a new text box from scratch.**
 - Type: the title face, heavier on slide 1 (the hook), the body face on the other slides, the mono face only on tags and counters. Faces and colors come from `estrategia/00-identidade-visual.md` and `memory/visual_identity_standard.md`. Do not hardcode a palette in this skill.
 
-When `carousel` is `md`, the markdown file is the piece and Canva is not used.
+When `carousel` is `md`, the markdown file is the piece and nothing is built.
 
 ### Decorative vocabulary
 
@@ -159,10 +160,10 @@ These are the overlay and caption steps above. This section is the detail, not a
 
 Before a caption, title, stepper, or any motion overlay (`local-video-use` / HyperFrames), read:
 
-- `memory/padrao-cards-motion-lato.md` — one motion mold: card layout, animated in and out, clicks that match each animation, review checklist. It is not the only mold. Read `memory/direcoes-motion.md` before choosing.
+- `memory/padrao-cards-motion.md` — one motion mold: card layout, animated in and out, clicks that match each animation, review checklist. It is not the only mold. Read `memory/direcoes-motion.md` before choosing.
 - `memory/hyperframes_caption_style.md` — caption spec already validated. Reuse it. Do not redesign it.
 - `memory/feedback_animation_composite_preview.md` — an overlay is not "done" on a green or empty background. Composite a preview on a real frame from the recording before the full render, and test all overlays together so they do not collide.
 
 ## Approval
 
-The creator approves before anything is scheduled or published. No autonomous posting. Nothing is built in Canva, and nothing is rendered at full resolution, without an explicit yes.
+The creator approves before anything is scheduled or published. No autonomous posting. Nothing is built or exported as a carousel, and nothing is rendered at full resolution, without an explicit yes.

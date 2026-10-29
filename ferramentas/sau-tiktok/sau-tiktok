@@ -1,3 +1,0 @@
-#!/bin/sh
-D="$(cd "$(dirname "$0")" && pwd)"
-exec "$D/../social-auto-upload/.venv/bin/python" "$D/tiktok.py" "$@"

@@ -1,4 +1,0 @@
-#!/bin/sh
-# Wrapper: venv do Scrapling (patchright). Perfil logado em .profile/
-D="$(cd "$(dirname "$0")" && pwd)"
-exec "$D/../scrapling/.venv/bin/python" "$D/yt.py" "$@"
